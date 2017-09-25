@@ -1,0 +1,20 @@
+.Dialog {
+	position: absolute;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #E6FFE0;
+	color: #2C2B2D;
+}
+
+.Dialog:after {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	content: '';
+	top: 0;
+	left: 0;
+}

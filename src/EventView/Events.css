@@ -1,0 +1,41 @@
+.White-background-wrapper {
+	background-color: white;
+	width: 100%;
+}
+
+.Events-wrapper {
+	display: block;
+	max-width: 768px;
+	margin: auto;
+	padding-top: 5em;
+	background-color: white;
+	color: #222122;
+}
+
+.Events {
+	display:  flex;
+	flex-flow: row wrap;
+
+	flex: 1 1 360px;
+
+	justify-content: space-between;
+	align-items: center;
+
+}
+
+@media only screen and (max-width: 768px) {
+	.Events {
+		width: 100%;
+		flex-flow: column;
+		white-space: normal;
+	}
+}
+
+.Events-heading {
+	margin: 0 0 0 1em;
+}
+
+small {
+	text-transform: uppercase;
+	color: #777;
+}

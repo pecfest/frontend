@@ -1,0 +1,12 @@
+
+.dividerLine, .smallDividerLine {
+	width: 15em;
+	margin: 1em auto;
+	height: 2px;
+	background-color: lightgray;
+	transition: width 1s;
+}
+
+.smallDividerLine {
+	width: 10em;
+}

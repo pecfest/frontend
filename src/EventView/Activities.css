@@ -1,0 +1,110 @@
+.Activities {
+	display: block;
+	position: relative;
+	height: 100%;
+	width: 100vw;
+	overflow: hidden;
+}
+
+.Activity-wrapper {
+	display: inline-block;
+	height: 100vh;
+	width: 20%;
+	text-align: center;
+}
+
+.Activity-cover {
+	height: 100%;
+}
+
+.Activity-wrapper:nth-child(even) {
+	background-color: #E6FFE0;
+	color: #196070;
+}
+
+.Activity-wrapper:nth-child(odd) {
+	background-color: #196070;
+	color: #E6FFE0;
+}
+
+.Activity {
+	top: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.Activity-title {
+	display: flex;
+	width: 100%;
+	text-transform: uppercase;
+	height: 100%;
+	align-items: center;
+}
+
+.Activity-heading {
+	font-size: 150%;
+	font-weight: 500;
+	display: block;
+	margin: auto;
+	vertical-align: middle;
+}
+
+.SelectedActivity-wrapper {
+	width: 100%;
+	margin-top: 5em;
+}
+
+.SelectedActivity {
+	display: block;
+	height: 100%;
+	max-width: 800px;
+	padding: 1em;
+	margin: auto;
+}
+
+.SelectedActivity-title {
+	font-size: 48px;
+	font-weight: 300;
+	color: #4C4B4D;
+	text-transform: uppercase;
+}
+
+.Button {
+	text-decoration: none;
+	background-color: transparent;
+	padding: 1em;
+	border: 1px solid;
+	color: #E6FFE0;
+	cursor: pointer;
+}
+
+.Button:hover {
+	background-color: #E6FFE0;
+	color: black;
+}
+
+@media only screen and (max-width: 768px) {
+	.Activity, .Activity-wrapper {
+		width: 100%;
+		display: block;
+		height: 20vh;
+	}
+
+	.Activity-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	.Activity {
+		position: relative;
+		vertical-align: middle;
+	}
+}
+
+.SelectedActivity-button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 1em;
+}

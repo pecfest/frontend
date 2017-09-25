@@ -1,0 +1,33 @@
+.Event-wrapper {
+	width: calc(100%);
+	text-align: center;
+	height: calc(100vh);
+	margin: auto;
+	display: block;
+	position: fixed;
+	overflow: auto;
+	background-color: #e4dbb5;
+	right: 0;
+	top: 0;
+	z-index: 100;
+	color: #145663;
+}
+
+.Event-details {
+	margin: 1em;
+}
+
+.Event {
+	text-align: left;
+	max-width: 1000px;
+	margin: 5em auto;
+	position: relative;
+}
+
+.Event-heading {
+}
+
+
+.Event-close-button {
+	color: #145663;
+}

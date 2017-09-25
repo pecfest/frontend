@@ -1,0 +1,11 @@
+
+.PECFEST-root {
+	height: 100%;
+	width: 100%;
+}
+
+a {
+	color: inherit;
+	font-style: none;
+	text-decoration: none;
+}

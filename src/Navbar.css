@@ -1,0 +1,9 @@
+
+.Navbar {
+	display: block;
+}
+
+.Navbar-link {
+	display: inline-block;
+	margin: 1em;
+}

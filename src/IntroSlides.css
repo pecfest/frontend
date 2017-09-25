@@ -1,0 +1,24 @@
+
+.IntroSlides-wrapper {
+	width: 100vw;
+	height: 100vh;
+}
+
+.IntroSlides-transition {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.black {
+	background-color: black;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.white {
+	background-color: white;
+	color: rgba(0, 0, 0, 0.5);
+}
+

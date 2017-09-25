@@ -1,0 +1,28 @@
+.FrontSlide-wrapper, .FakeSlide-wrapper {
+	max-width: 1000px;
+	margin: auto;
+	display: block;
+	height: 100%;
+	text-align: center;
+}
+
+.Title {
+	font-weight: 400;
+	font-size: 5em;
+	margin-bottom: 0;
+}
+
+.FrontSlide-Timeleft > small, .FrontSlide-Dates > small {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.Title-letter {
+	display: inline-block;
+}
+
+.FrontSlide {
+	opacity: 1;
+	transform: translateY(100%);
+	transform-origin: center;
+}

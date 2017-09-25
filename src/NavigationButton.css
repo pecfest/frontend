@@ -1,0 +1,24 @@
+.NavigationButton {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1em;
+	background-color: black;
+	color: white;
+	border: none;
+}
+
+
+.Button {
+	text-decoration: none;
+	background-color: transparent;
+	padding: 1em;
+	border: 1px solid;
+	color: #E6FFE0;
+	cursor: pointer;
+}
+
+.Button:hover {
+	background-color: #E6FFE0;
+	color: black;
+}

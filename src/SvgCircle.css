@@ -1,0 +1,4 @@
+circle#progress {
+	stroke-dashoffset: 0;
+	transform: rotate(90deg);
+}

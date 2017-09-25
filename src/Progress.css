@@ -1,0 +1,24 @@
+.Progress {
+	margin:auto;
+	text-align:center;
+	letter-spacing: normal;
+}
+
+.Progress-percent {
+	padding: 0.5em;
+}
+
+@keyframes slideIn {
+	from {
+		height: 0;
+	}
+
+	to {
+		height: 2em;
+	}
+}
+
+.Progress-wrapper {
+	animation-name: slideIn;
+	animation-duration: 1s;
+}

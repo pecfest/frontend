@@ -1,0 +1,70 @@
+.ShortEvent {
+	border-radius: 10px;
+	margin: 0.5em 0.25em 0.25em 0.25em;
+	height: 480px;
+	width: calc(50% - 0.5em);
+	text-align: center;
+	background-color: #e6ffe0;
+	box-shadow: 0 0.5em 1em lightgray;
+	cursor: pointer;
+	font-size: 2em;
+	z-index: 1;
+}
+
+.centeredDiv {
+	vertical-align: middle;
+	width: 100%;
+}
+
+.ShortEvent-title {
+	font-weight: 900;
+	width: 100%;
+}
+
+.ShortEvent-description {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	color: #e6ffe0;
+	align-items: center;
+}
+
+.ShortEvent-background {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	filter: grayscale(1) brightness(0.4) saturate(4);
+	background-repeat: none;
+}
+
+@media only screen and (max-width: 768px) {
+	.ShortEvent {
+		border-radius: none;
+		display: block;
+		height: 480px;
+		width: calc(100% - 4em);
+		border: none;
+		text-align: left;
+		padding: 1em;
+		box-shadow: none;
+	}
+
+	.ShortEvent:after {
+		border-radius: none;
+	}
+
+	.Events {
+		overflow-y: auto;
+	}
+}
+
+.ShortEvent-coverphoto {
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
