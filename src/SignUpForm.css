@@ -1,0 +1,68 @@
+.SignUpForm-wrapper {
+	max-width: 1000px;
+	display: block;
+	margin: auto;
+}
+
+.SignUpForm {
+	padding: 1em;
+}
+
+.SignUpForm-title {
+	color: gray;
+}
+
+input.SignUpInput {
+	width: 100%;
+	background: none;
+	border: none !important;
+	margin: 0;
+	font-size: 2em;
+	margin-bottom: 1em;
+	font-family: inherit;
+	font-weight: 700;
+}
+
+input.SignUpInput:focus {
+	border: none !important;
+}
+
+input[type="text"].SignUpInput:focus {
+	border: none !important;
+}
+
+
+input:focus {
+	outline: none;
+}
+
+input.SignUpInput::placeholder {
+	color: lightgray;
+}
+
+.SignUpBackButton, .SignUpNextButton {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 2em;
+	font-weight: 700;
+	color: gray;
+	display: block;
+}
+
+.Control-buttons {
+	display: flex;
+	width: 100%;
+}
+
+.FinalStep {
+	font-size: 2em;
+	font-weight: 700;
+	color: gray;
+	margin-bottom: 1em;
+}
+
+.pecfestId {
+	color: black;
+}

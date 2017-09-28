@@ -1,14 +1,23 @@
-.ShortEvent {
-	border-radius: 10px;
-	margin: 0.5em 0.25em 0.25em 0.25em;
-	height: 480px;
-	width: calc(50% - 0.5em);
+.ShortEvent-wrapper {
+	width: 100%;
 	text-align: center;
-	background-color: #e6ffe0;
-	box-shadow: 0 0.5em 1em lightgray;
-	cursor: pointer;
-	font-size: 2em;
 	z-index: 1;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.ShortEvent {
+	padding: 1em 0;
+	cursor: pointer;
+	display: inline;
+	width: 100%;
+	font-size: 2em;
+	transition: font-size 500ms;
+}
+
+.ShortEvent:hover {
+	font-size: 2.1em;
 }
 
 .centeredDiv {
@@ -38,33 +47,52 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border-radius: 10px;
 	filter: grayscale(1) brightness(0.4) saturate(4);
+	transition: filter 500ms;
 	background-repeat: none;
 }
 
 @media only screen and (max-width: 768px) {
 	.ShortEvent {
-		border-radius: none;
-		display: block;
-		height: 480px;
-		width: calc(100% - 4em);
+		display: inline;
 		border: none;
 		text-align: left;
-		padding: 1em;
 		box-shadow: none;
 	}
 
 	.ShortEvent:after {
 		border-radius: none;
 	}
-
-	.Events {
-		overflow-y: auto;
-	}
 }
 
 .ShortEvent-coverphoto {
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
 }
+
+.EventLinks {
+	display: block;
+	width: 100%;
+	background: #E6FFE0;
+	text-align: left;
+}
+.EventLink {
+	padding: 1em;
+	display: block;
+	cursor: pointer;
+}
+.EventLink:hover {
+	background: #c2d6bd;
+}
+
+.EventLinks-heading {
+	padding: 1em;
+	border-bottom: 1px solid #c2d6bd;
+}
+
+.EventLinks-close {
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	right: 1em;
+	background: none;
+}
+

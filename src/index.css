@@ -7,3 +7,11 @@ body {
 .center {
 	text-align: center;
 }
+
+[contenteditable="true"]:focus {
+	outline: none;
+}
+
+button:focus {
+	outline: none;
+}

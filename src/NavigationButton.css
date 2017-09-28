@@ -11,14 +11,14 @@
 
 .Button {
 	text-decoration: none;
-	background-color: transparent;
+	background-color: #E6ffE0;
 	padding: 1em;
 	border: 1px solid;
-	color: #E6FFE0;
+	color: black;
 	cursor: pointer;
 }
 
 .Button:hover {
-	background-color: #E6FFE0;
+	background-color: #f6FFf0;
 	color: black;
 }

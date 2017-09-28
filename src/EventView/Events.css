@@ -12,14 +12,18 @@
 	color: #222122;
 }
 
+.Events-heading {
+	margin-bottom: 12px;
+}
+
 .Events {
 	display:  flex;
 	flex-flow: row wrap;
 
 	flex: 1 1 360px;
 
-	justify-content: space-between;
-	align-items: center;
+	justify-content: flex-start;
+	align-items: stretch;
 
 }
 
@@ -29,13 +33,23 @@
 		flex-flow: column;
 		white-space: normal;
 	}
-}
 
-.Events-heading {
-	margin: 0 0 0 1em;
+	.Events-wrapper {
+		margin-left: 1em;
+		margin-right: 1em;
+	}
 }
 
 small {
 	text-transform: uppercase;
 	color: #777;
+	font-size: 0.7em;
+}
+
+.Events-selected {
+	position: absolute;
+	margin: 0;
+	border: none;
+	box-shadow: none;
+	z-index: 10000;
 }

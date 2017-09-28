@@ -1,0 +1,25 @@
+input.TextInput-input {
+	width: 100%;
+	background: none;
+	border: none !important;
+	margin: 0;
+	font-family: inherit;
+	font-weight: 700;
+}
+
+input.TextInput-input:focus {
+	border: none !important;
+}
+
+input[type="text"].TextInput-input:focus {
+	border: none !important;
+}
+
+
+input:focus {
+	outline: none;
+}
+
+input.TextInput-input::placeholder {
+	color: lightgray;
+}

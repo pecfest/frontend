@@ -2,24 +2,43 @@ const events = [
 	{
 		id: 1,
 		title: 'Robo wars',
-		description: 'Officia ad cillum commodo minim sint non non dolore laborum aliqua occaecat amet nisi voluptate ut laborum nostrud aute ad irure quis quis reprehenderit sed amet et mollit in commodo aliquip dolor adipisicing exercitation dolore non reprehenderit dolor reprehenderit do exercitation laborum officia cillum qui adipisicing reprehenderit amet mollit officia aute mollit ad do eu deserunt do reprehenderit qui pariatur laborum adipisicing in sed in sint consectetur deserunt cillum excepteur est ut eu nisi cillum tempor cillum nisi nulla elit occaecat deserunt eiusmod quis amet excepteur consectetur id nisi magna incididunt consequat dolor enim incididunt fugiat ad aliquip tempor aliqua et cupidatat cillum veniam sunt esse in dolor aliquip labore adipisicing fugiat nulla velit magna qui reprehenderit laboris sed quis fugiat pariatur ut tempor velit consectetur dolore laboris sed amet dolor incididunt laboris officia ut laborum aliquip labore sunt nisi consequat dolor velit exercitation qui minim reprehenderit quis voluptate aliquip ullamco est veniam cupidatat velit labore culpa amet duis consequat incididunt dolor non quis laboris ex culpa aute ullamco.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
+		description: 'Officia ad cillum ',
+		problem_statement: 'Officia ad cillum commodo minim sint non non dolore laborum aliqua occaecat amet nisi voluptate ut laborum nostrud aute ad irure quis quis reprehenderit sed amet et mollit in commodo aliquip dolor adipisicing exercitation dolore non reprehenderit dolor reprehenderit do exercitation laborum officia cillum qui adipisicing reprehenderit amet mollit officia aute mollit ad do eu deserunt do reprehenderit qui pariatur laborum adipisicing in sed in sint consectetur deserunt cillum excepteur est ut eu nisi cillum tempor cillum nisi nulla elit occaecat deserunt eiusmod quis amet excepteur consectetur id nisi magna incididunt consequat dolor enim incididunt fugiat ad aliquip tempor aliqua et cupidatat cillum veniam sunt esse in dolor aliquip labore adipisicing fugiat nulla velit magna qui reprehenderit laboris sed quis fugiat pariatur ut tempor velit consectetur dolore laboris sed amet dolor incididunt laboris officia ut laborum aliquip labore sunt nisi consequat dolor velit exercitation qui minim reprehenderit quis voluptate aliquip ullamco est veniam cupidatat velit labore culpa amet duis consequat incididunt dolor non quis laboris ex culpa aute ullamco.',
+		details: 'Officia ad cillum commodo minim sint non non dolore laborum aliqua occaecat amet nisi voluptate ut laborum nostrud aute ad irure quis quis reprehenderit sed amet et mollit in commodo aliquip dolor adipisicing exercitation dolore non reprehenderit dolor reprehenderit do exercitation laborum officia cillum qui adipisicing reprehenderit amet mollit officia aute mollit ad do eu deserunt do reprehenderit qui pariatur laborum adipisicing in sed in sint consectetur deserunt cillum excepteur est ut eu nisi cillum tempor cillum nisi nulla elit occaecat deserunt eiusmod quis amet excepteur consectetur id nisi magna incididunt consequat dolor enim incididunt fugiat ad aliquip tempor aliqua et cupidatat cillum veniam sunt esse in dolor aliquip labore adipisicing fugiat nulla velit magna qui reprehenderit laboris sed quis fugiat pariatur ut tempor velit consectetur dolore laboris sed amet dolor incididunt laboris officia ut laborum aliquip labore sunt nisi consequat dolor velit exercitation qui minim reprehenderit quis voluptate aliquip ullamco est veniam cupidatat velit labore culpa amet duis consequat incididunt dolor non quis laboris ex culpa aute ullamco.',
+
+		date: '1 June, 2017 @ 5:00p.m.',
 		teamsize: 5,
-		activityId: 2,
+		venue: 'Audi',
+		rule_list: [
+			'Hello',
+			'Then Hello',
+			'Then again',
+		],
+        "coordinators": [
+	      {
+	        "name": "coordinator_1",
+	        "phone": "+919532456987987",
+	        "email": "someone@gmail.com"
+	      },
+	      {
+	        "name": "coordinator_2",
+	        "phone": "+9198454654654",
+	        "email": "someone@gmail.com"
+	      }
+	    ],
+		prize: '10000',
+		activityId: 1,
 		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
 	},
-		{
+	{
 		id: 2,
 		title: 'Robo wars',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		startingDate: '1 June, 2017 @ 5:00p.m.',
 		endDate: '1 June, 2017 @ 6:00p.m.',
 		teamsize: 5,
-		activityId: 2,
+		activityId: 1,
 		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
 	},
 	{
 		id: 3,
@@ -30,7 +49,6 @@ const events = [
 		teamsize: 5,
 		activityId: 2,
 		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
 	},
 		{
 		id: 4,
@@ -133,6 +151,44 @@ const events = [
 	},
 ]
 
+const subcategories = [
+	{
+		id: 1,
+		name: 'SAASC',
+		head: 'Someone Someone',
+		type: 1,
+		backgroundImageUrl: 'http://source.unsplash.com/random',
+	},
+	{
+		id: 2,
+		name: 'Punjabi Editorial Board',
+		head: 'Someone Singh',
+		type: 1,
+		backgroundImageUrl: 'http://source.unsplash.com/random',
+	},
+	{
+		id: 3,
+		name: 'Hindi Editorial Board',
+		head: 'Someone Sharma',
+		backgroundImageUrl: 'http://source.unsplash.com/random',
+		type: 1,
+	},
+	{
+		id: 4,
+		name: 'Robotics',
+		backgroundImageUrl: 'http://source.unsplash.com/random',
+		head: 'Someone geeky',
+		type: 2
+	},
+	{
+		id: 5,
+		name: 'Computer Science Society',
+		backgroundImageUrl: 'http://source.unsplash.com/random',
+		head: 'Someone geeky',
+		type: 2
+	}
+]
+
 const activities = [
 	{
 		id: 1,
@@ -166,4 +222,4 @@ const activities = [
 	}
 ]
 
-export { events, activities };
+export { events, activities, subcategories };

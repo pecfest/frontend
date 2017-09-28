@@ -5,7 +5,7 @@
 }
 
 a {
-	color: inherit;
-	font-style: none;
-	text-decoration: none;
+	color: inherit !important;
+	font-style: none !important;
+	text-decoration: none !important;
 }

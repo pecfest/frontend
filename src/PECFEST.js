@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Activities from './EventView/Activities';
 import Events from './EventView/Events';
+import Event from './Event';
 import IntroSlides from './IntroSlides';
 
 import NavigationButton from './NavigationButton';
@@ -21,6 +22,7 @@ export default class PECFEST extends Component {
 							exact
 							component={Events}
 						/>
+						<Route path="/events/:eventId" exact component={Event} />
 					</div>
 					<NavigationButton />
 				</div>

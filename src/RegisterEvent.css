@@ -1,0 +1,45 @@
+.MemberInput {
+}
+
+.RemoveButton {
+}
+
+.RegisterEvent-wrapper {
+	max-width: 1000px;
+	margin: auto;
+}
+
+.RegisterEvent {
+	padding: 1em;
+}
+
+.FormButton {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 1em;
+}
+
+.RegisterEvent-title > h1 {
+	font-size: 3.2em;
+	color: gray;
+}
+
+.RegisterEvent-eventname {
+	color: black;
+}
+
+.RegisterEvent-instructions {
+	color: gray;
+	margin-bottom: 2em;
+}
+
+.RegisterEvent-teamsize {
+	color: black;
+	font-weight: 700;
+}
+
+.RegisterEvent-memberSize {
+	margin-bottom: 1em;
+}

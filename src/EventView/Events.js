@@ -6,7 +6,7 @@ import Event from '../Event';
 import Dialog from '../Dialog';
 
 import ShortEvent from './ShortEvent';
-import { events } from '../eventdb';
+import { events, subcategories } from '../eventdb';
 
 import './Events.css';
 
@@ -19,10 +19,6 @@ export default class Events extends Component {
 		eventSelected: false,
 		events: events,
 		fetchedAll: 0
-	}
-
-	handleClick = event => {
-		this.setState({ eventSelected: true, event })
 	}
 
 	handleClose = event => {
@@ -56,10 +52,10 @@ export default class Events extends Component {
 			<div className="White-background-wrapper">
 			<div className="Events-wrapper wrapper">
 				<div className="Events-heading">
-					<small>Events</small>
+					<small>Events By</small>
 				</div>
 				<StaggeredMotion
-					defaultStyles={events.map(() => ({ h: 0 }))}
+					defaultStyles={subcategories.map(() => ({ h: 0 }))}
 					styles={
 						prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
 							return i === 0 ?
@@ -77,10 +73,9 @@ export default class Events extends Component {
 											transform: `translateY(${100 - style.h}%)`,
 											opacity: style.h / 100,
 										}}
-										event={events[i]}
-										id={"Event-" + events[i].id}
+										subcategory={subcategories[i]}
+										id={"Event-" + subcategories[i].id}
 										key={i}
-										onClick={this.handleClick}
 									/>
 								)
 							})
@@ -90,12 +85,6 @@ export default class Events extends Component {
 				}
 				</StaggeredMotion>
 			</div>
-
-			{
-				this.state.eventSelected ?
-					<Event event={this.state.event} onClose={this.handleClose} /> :
-					""
-			}
 			</div>
 		)
 	}

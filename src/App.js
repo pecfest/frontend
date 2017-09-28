@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import anime from 'animejs';
 import Progress from './Progress';
 import Begin from './Begin';
-import {events, activities} from './eventdb';
+import { subcategories } from './eventdb';
 import ErrorMessage from './ErrorMessage';
 import './App.css';
 
@@ -101,11 +101,12 @@ class App extends Component {
     anim.complete = () => {
       this.setState({ starting: false });
 
-      for (const i in events) {
-        fetch(events[i].backgroundImageUrl, { redirect: 'follow' })
+
+      for (const i in subcategories) {
+        fetch(subcategories[i].backgroundImageUrl, { redirect: 'follow' })
           .then(response => { return response.blob(); } )
           .then(blob => {
-            events[i].backgroundImageUrl = URL.createObjectURL(blob);
+            subcategories[i].backgroundImageUrl = URL.createObjectURL(blob);
 
             this.setState((prevState, props) => ({ progress: prevState.progress - 1 }));
           })
@@ -113,7 +114,7 @@ class App extends Component {
             this.setState((prevState, props) => ({ error: true }))
           });
       }
-      this.setState((prevState, props) => ({ progress: events.length, total: events.length + 1 }));
+      this.setState((prevState, props) => ({ progress: subcategories.length, total: subcategories.length + 1 }));
     }
   }
 
