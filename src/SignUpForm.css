@@ -40,7 +40,7 @@ input.SignUpInput::placeholder {
 	color: lightgray;
 }
 
-.SignUpBackButton, .SignUpNextButton {
+.SignUpBackButton, .SignUpNextButton, .SignUpButton {
 	border: none;
 	background: transparent;
 	cursor: pointer;
@@ -48,6 +48,7 @@ input.SignUpInput::placeholder {
 	font-size: 2em;
 	font-weight: 700;
 	color: gray;
+	padding: 0;
 	display: block;
 }
 
@@ -57,7 +58,6 @@ input.SignUpInput::placeholder {
 }
 
 .FinalStep {
-	font-size: 2em;
 	font-weight: 700;
 	color: gray;
 	margin-bottom: 1em;

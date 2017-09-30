@@ -36,7 +36,7 @@ class TransitionLeft extends Component {
 						<div className="IntroSlides-wrapper">
 							{
 								styles.map((style, i) => (
-									<div className={"IntroSlides-transition " +  (i%2 ? 'white' : 'black')}
+									<div className={"IntroSlides-transition " +  (i%2 || i == 0 ? 'white' : 'black')}
 										style={{
 											transform: `translateX(${100 - style.h}%)`
 										}}

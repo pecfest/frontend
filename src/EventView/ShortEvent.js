@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Event from '../Event';
 import Dialog from '../Dialog';
-import { events } from '../eventdb';
+import { activities, api } from '../eventdb';
 import { Link, withRouter } from 'react-router-dom';
-import { Motion, spring } from 'react-motion'
+import { Motion, spring } from 'react-motion';
 import rebound from 'rebound';
 
 import './ShortEvent.css';
 
 class EventLinks extends Component {
 	state = {
-		closing: false
+		loading: true,
+		closing: false,
+		events: [],
 	}
 
 	handleClick = () => {
@@ -23,9 +25,23 @@ class EventLinks extends Component {
 		}
 	}
 
+	handleSuccess = (events) => {
+		this.setState({ loading: false, events });
+	}
+
+	handleFailed = () => {
+		this.setState({ error: true, loading: false });
+	}
+
+	componentDidMount() {
+		api.getEventsForCategory(this.props.forCategory, {
+			onSuccess: this.handleSuccess,
+			onFailed: this.handleFailed
+		});
+	}
+
 	render() {
-		const eventsToShow = events.filter(event => event.activityId === this.props.id);
-		console.log(eventsToShow);
+		const eventsToShow = this.state.events;
 		return (
 			<div className="EventLinks">
 				<div className="EventLinks-heading">
@@ -35,13 +51,15 @@ class EventLinks extends Component {
 					</button>
 				</div>
 				{
-					events.map(event => (
-						<Link key={event.id} to={'/events/' + event.id} className="EventLink">
-							{
-								event.title
-							}
-						</Link>
-					))
+					!this.state.loading && eventsToShow.length === 0 ? <h3 className="ComingSoon">Coming soon!</h3> :
+						(this.state.loading ? <h3 className="ComingSoon">Loading events...</h3> :
+							eventsToShow.map((event, i) => (
+								<Link key={i} to={'/events/' + event.id} className="EventLink">
+									{
+										event.name
+									}
+								</Link>
+							)))
 				}
 			</div>
 		)
@@ -102,7 +120,7 @@ class ShortEvent extends Component {
 					</div>
 
 				</div>
-				{ this.state.selected ? <EventLinks forCategory={this.props.subcategory.id} onClose={this.handleClose} /> : ""}
+				{ this.state.selected ? <EventLinks forCategory={this.props.subcategory} onClose={this.handleClose} /> : ""}
 			</div>
 		)
 	}

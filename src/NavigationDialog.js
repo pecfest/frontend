@@ -18,10 +18,6 @@ const links = [
 		to: '/sponsors',
 	},
 	{
-		name: 'Our Theme',
-		to: '/our-theme',
-	},
-	{
 		name: 'Team',
 		to: '/team',
 	},

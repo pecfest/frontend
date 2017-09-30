@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import BackgroundCanvas from './BackgroundCanvas';
+import { Link } from 'react-router-dom';
 import anime from 'animejs';
 import moment from 'moment';
 import './FrontSlide.css';
 
 class Title extends Component {
 	componentDidMount() {
-
+		const letters = document.querySelectorAll('.Title-letter')
+		this.animation = anime({
+			targets: letters,
+			translateY: [ '100%', '0%' ],
+			opacity: [ 0, 1 ],
+			delay: (el, i, l) => {
+				return i * 50
+			},
+			duration: 2000,
+		})
 	}
 
 	render() {
@@ -28,22 +39,15 @@ export default class FrontSlide extends Component {
 
 	render() {
 		return (
-			<div className="FrontSlide-wrapper"
-				style={{
-					transformOrigin: 'center',
-					marginTop: '4em',
-					transform: `translateY(${this.props.transition.h}%)`,
-					opacity: 1 - this.props.transition.h / 100,
-					perspective: '20px',
-				}}
-			>
+			<div className="FrontSlide-wrapper">
 				<div className="FrontSlide" ref="frontSlide">
 					<Title value="PECFEST" />
 					<div className="FrontSlide-Dates">
-						<small><span style={{color: 'white'}}>27</span>th October - <span style={{color: 'white'}}>29</span>th October</small>
+						<small style={{fontWeight: '700', display: 'block', marginBottom: '2em'}}><span style={{color: 'white'}}>27</span>th October - <span style={{color: 'white'}}>29</span>th October</small>
 					</div>
-					<div className="FrontSlide-Timeleft">
-						<small>Only <span style={{ color: 'white' }}>{moment([2017, 10, 27]).fromNow(true)}</span> left</small>
+					<div className="divider" />
+					<div className="FrontSlide-register">
+						<Link className="FrontSlide-registerLink" to="/register">Register</Link>
 					</div>
 				</div>
 			</div>

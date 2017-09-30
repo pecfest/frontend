@@ -1,0 +1,32 @@
+.SignUpOrLoginForm {
+	max-width: 1000px;
+	display: block;
+	margin: auto;
+}
+
+.SignUpButton {
+	color: gray;
+	display: inline;
+}
+
+.highlight {
+	color: black;
+}
+
+.light {
+	color: lightgray;
+	font-weight: 700;
+	font-size: 2em;
+}
+
+.SignUpOrLoginForm-options {
+	display: inline-block;
+	padding: 1em;
+}
+
+.Divider {
+	margin: 1em;
+	width: calc(100% - 2em);
+	height: 2px;
+	background-color: gray;
+}

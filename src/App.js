@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import anime from 'animejs';
 import Progress from './Progress';
 import Begin from './Begin';
-import { subcategories } from './eventdb';
+import { activities } from './eventdb';
 import ErrorMessage from './ErrorMessage';
 import './App.css';
+
+const subcategories = [];
+
+for (const activity of activities) {
+  for (const subcategory of activity.sub_categories) {
+    subcategories.push(subcategory);
+  }
+}
 
 class App extends Component {
   state = {

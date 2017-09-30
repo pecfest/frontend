@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+@media only screen and (max-width: 425px) {
+  .text {
+    margin-left: -30px !important;
+    margin-top: 70px !important;
+  }
+
+  #pecfest-title {
+    font-size: 34px;
+    margin-top: 30px !important;
+  }
+}
+
+      html, body {
+      margin: 0;
+      padding: 0;
+    /*  Background fallback in case of IE8 & down, or in case video
+doens't load, such as with slower connections  */
+      background: #333;
+      background-attachment: fixed;
+      background-size: cover;
+      overflow-x: hidden !important;
+      overflow-y: hidden !important;
+      width: 100%;
+      height : 100vh;
+    }
+
+    .bullet {
+      max-width: 48px;
+      margin-left: 40px;
+    }
+
+    #video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+    }
+
+    @keyframes movetop {
+      0%,15% {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      25%,100% {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%);
+      }
+    }
+
+
+    @keyframes moveright {
+      0%,15% {
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+      }
+
+      25%,100% {
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes moveleft {
+      0%,15% {
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+      }
+
+      25%,100% {
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes movebottom {
+      0%,15% {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      25%,100% {
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes moveopaque {
+      0% { opacity:0;}
+      25% {opacity:0;}
+      100% { opacity:0.5;}
+    }
+
+    .top {
+        overflow: hidden;
+        -webkit-animation: movetop ease-out normal 5s ;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation: movetop ease-out normal 5s ;
+        -moz-animation-iteration-count: infinite;
+        animation: movetop ease-out normal 5s ;
+        animation-iteration-count: infinite;
+    }
+
+     .left {
+        overflow: hidden;
+        -webkit-animation: moveleft ease-out normal 5s ;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation: moveleft ease-out normal 5s ;
+        -moz-animation-iteration-count: infinite;
+        animation: moveleft ease-out normal 5s ;
+        animation-iteration-count: infinite;
+    }
+
+    .right{
+      overflow: hidden;
+        -webkit-animation: moveright ease-out normal 5s ;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation: moveright ease-out normal 5s ;
+        -moz-animation-iteration-count: infinite;
+        animation: moveright ease-out normal 5s ;
+        animation-iteration-count: infinite;
+    }
+
+    .bottom{
+      overflow: hidden;
+        -webkit-animation: movebottom ease-out normal 5s ;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation: movebottom ease-out normal 5s ;
+        -moz-animation-iteration-count: infinite;
+        animation: movebottom ease-out normal 5s ;
+        animation-iteration-count: infinite;
+    }
+
+    .inner-box{
+      overflow: hidden;
+        -webkit-animation: moveopaque ease-out normal 5s ;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation: moveopaque ease-out normal 5s ;
+        -moz-animation-iteration-count: infinite;
+        animation: moveopaque ease-out normal 5s ;
+        animation-iteration-count: infinite;
+    }
+
+ul {
+  list-style-type:circle;
+  color:white;
+  padding: 0;
+  margin-top: 31vh;
+  font-size: 200%;
+}
+
+li{margin-left: 2vw;  margin-top: 2.5vh;}
+
+li:active{list-style-type:disc;}
+
+.text {
+  position: absolute;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  font: normal 50px/normal Arial Black, Gadget, sans-serif;
+  color: rgba(255,255,255,1);
+  text-decoration: normal;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+}
+
+
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+  <video autoplay loop id="video-background" muted plays-inline>
+  <source id="vid_source" src="Amit.mp4" type="video/mp4" >
+</video>
+  <div style="overflow-x:hidden; width:100%; height:100vh; z-index:2">
+  <div id="top" class="top" style="width: 100%; height: 40%; background:black;position:absolute;"></div>
+  <div id="left" class="left" style="width: 35%; height: 100%; background:black;position:absolute"></div>
+  <div id="bottom" class="bottom" style="top: 60%; width: 100%; height: 40%;background:black; position:absolute; overflow: hidden;"></div>
+  <div id="right" class="right" style="left: 65%; width: 40%; height: 100%;background:black; position:absolute;  overflow: hidden;"></div>
+  <div class="text" id="pecfest-title" style="top:20%; left:13%">PECFEST 2016</div>
+  <div class ="text" id="events" style="top:45%; left:13%;font-size:2.7vh"></div>
+  <div class ="text" id="schools" style="top:50%; left:13%;font-size:2.7vh"></div>
+  <div class ="text" id="foot" style="top:55%; left:13%; font-size:2.7vh"></div>
+    <div id="sidebar" style="right:0%; width:40px; height:100%;background:black; position:absolute; opacity:0.5">
+    <ul id="side-list">
+      <li id="l0" onclick="clicked(0)" class="bullet"> </li>
+      <li id="l1" onclick="clicked(1)" class="bullet"> </li>
+      <li id="l2" onclick="clicked(2)" class="bullet"> </li>
+      <li id="l3" onclick="clicked(3)" class="bullet"> </li>
+    </ul>
+  </div>
+</div>
+  <canvas id="inner-box" class="inner-box" style="position:absolute; left:40%; top:40%;width:20%; height:20%; border: 2px solid #ffffff; opacity:0">
+</canvas>
+<script>
+
+      var i=0;
+
+      var events = document.getElementById("events");
+      var eve_count=0;
+      var school = document.getElementById("schools");
+      var school_count=0;
+      var foot = document.getElementById("foot");
+      var foot_count=0;
+      var complete = 0;
+      var int1=setInterval(function(){
+      events.innerHTML="Events : "+eve_count.toString();
+      if(eve_count<50)eve_count+=1;
+      else { eve_count = 50; complete++;}
+      school.innerHTML="Schools : "+school_count.toString()+"+";
+      if(school_count<330)school_count+=12;
+      else { school_count = 330; complete++;}
+      foot.innerHTML="Foot Fall : "+foot_count.toString()+"+";
+      if(foot_count<25000)foot_count+=400;
+      else { foot_count = 25000; complete++;}
+      if (complete>=3) {
+        clearInterval(int1);
+      }
+    },30);
+
+      var player = document.getElementById("video-background");
+
+      var Vid = document.getElementById('vid_source');
+
+      var video_source=[["Amit.mp4", "video/mp4"], ["Crowd.mp4","video/mp4"], ["Drums.mp4", "video/mp4"], ["Groovz.mp4","video/mp4"]];
+
+      function clicked(num){
+        Vid.src = video_source[num][0];
+        Vid.type = video_source[num][1];
+        player.load();
+        player.play();
+        i=num;
+        i+=1;
+        i%=4;
+        var element = document.getElementById("top");
+        element.classList.remove("top");
+        void element.offsetWidth;
+        element.classList.add("top");
+        var element = document.getElementById("left");
+        element.classList.remove("left");
+        void element.offsetWidth;
+        element.classList.add("left");
+        var element = document.getElementById("bottom");
+        element.classList.remove("bottom");
+        void element.offsetWidth;
+        element.classList.add("bottom");
+        var element = document.getElementById("right");
+        element.classList.remove("right");
+        void element.offsetWidth;
+        element.classList.add("right");
+        var element = document.getElementById("inner-box");
+        element.classList.remove("inner-box");
+        void element.offsetWidth;
+        element.classList.add("inner-box");
+      }
+
+      var refreshboxElement=setInterval(function(){
+        i+=1;
+        i%=4;
+        Vid.src = video_source[i][0];
+        Vid.type = video_source[i][1];
+        player.load();
+        player.play();
+    },5000);
+
+
+</script>
+</body>
+</html>

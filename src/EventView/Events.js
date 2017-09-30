@@ -6,7 +6,7 @@ import Event from '../Event';
 import Dialog from '../Dialog';
 
 import ShortEvent from './ShortEvent';
-import { events, subcategories } from '../eventdb';
+import { activities } from '../eventdb';
 
 import './Events.css';
 
@@ -15,10 +15,18 @@ const config = {
 }
 
 export default class Events extends Component {
-	state = {
-		eventSelected: false,
-		events: events,
-		fetchedAll: 0
+	constructor(props) {
+		super(props);
+		let subcategories = []
+		const category = activities.find((category) => category.parent_category === this.props.match.params.activityId);
+		if (typeof category !== 'undefined') {
+			subcategories = category.sub_categories;
+		}
+		this.state = {
+			eventSelected: false,
+			subcategories: subcategories,
+			fetchedAll: 0
+		}
 	}
 
 	handleClose = event => {
@@ -38,6 +46,9 @@ export default class Events extends Component {
 	}
 
 	render() {
+
+		const subcategories = this.state.subcategories;
+
 		if (this.state.fetchedAll > 0) {
 			return (
 				<div className="Events-wrapper wrapper">
@@ -52,7 +63,9 @@ export default class Events extends Component {
 			<div className="White-background-wrapper">
 			<div className="Events-wrapper wrapper">
 				<div className="Events-heading">
-					<small>Events By</small>
+					<small>Showing <span style={{color: 'black', fontWeight: '700'}}>
+						{this.props.match.params.activityId}
+					</span> events</small>
 				</div>
 				<StaggeredMotion
 					defaultStyles={subcategories.map(() => ({ h: 0 }))}
@@ -74,7 +87,7 @@ export default class Events extends Component {
 											opacity: style.h / 100,
 										}}
 										subcategory={subcategories[i]}
-										id={"Event-" + subcategories[i].id}
+										id={"Event-" + i}
 										key={i}
 									/>
 								)

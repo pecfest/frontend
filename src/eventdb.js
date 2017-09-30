@@ -1,225 +1,173 @@
-const events = [
-	{
-		id: 1,
-		title: 'Robo wars',
-		description: 'Officia ad cillum ',
-		problem_statement: 'Officia ad cillum commodo minim sint non non dolore laborum aliqua occaecat amet nisi voluptate ut laborum nostrud aute ad irure quis quis reprehenderit sed amet et mollit in commodo aliquip dolor adipisicing exercitation dolore non reprehenderit dolor reprehenderit do exercitation laborum officia cillum qui adipisicing reprehenderit amet mollit officia aute mollit ad do eu deserunt do reprehenderit qui pariatur laborum adipisicing in sed in sint consectetur deserunt cillum excepteur est ut eu nisi cillum tempor cillum nisi nulla elit occaecat deserunt eiusmod quis amet excepteur consectetur id nisi magna incididunt consequat dolor enim incididunt fugiat ad aliquip tempor aliqua et cupidatat cillum veniam sunt esse in dolor aliquip labore adipisicing fugiat nulla velit magna qui reprehenderit laboris sed quis fugiat pariatur ut tempor velit consectetur dolore laboris sed amet dolor incididunt laboris officia ut laborum aliquip labore sunt nisi consequat dolor velit exercitation qui minim reprehenderit quis voluptate aliquip ullamco est veniam cupidatat velit labore culpa amet duis consequat incididunt dolor non quis laboris ex culpa aute ullamco.',
-		details: 'Officia ad cillum commodo minim sint non non dolore laborum aliqua occaecat amet nisi voluptate ut laborum nostrud aute ad irure quis quis reprehenderit sed amet et mollit in commodo aliquip dolor adipisicing exercitation dolore non reprehenderit dolor reprehenderit do exercitation laborum officia cillum qui adipisicing reprehenderit amet mollit officia aute mollit ad do eu deserunt do reprehenderit qui pariatur laborum adipisicing in sed in sint consectetur deserunt cillum excepteur est ut eu nisi cillum tempor cillum nisi nulla elit occaecat deserunt eiusmod quis amet excepteur consectetur id nisi magna incididunt consequat dolor enim incididunt fugiat ad aliquip tempor aliqua et cupidatat cillum veniam sunt esse in dolor aliquip labore adipisicing fugiat nulla velit magna qui reprehenderit laboris sed quis fugiat pariatur ut tempor velit consectetur dolore laboris sed amet dolor incididunt laboris officia ut laborum aliquip labore sunt nisi consequat dolor velit exercitation qui minim reprehenderit quis voluptate aliquip ullamco est veniam cupidatat velit labore culpa amet duis consequat incididunt dolor non quis laboris ex culpa aute ullamco.',
-
-		date: '1 June, 2017 @ 5:00p.m.',
-		teamsize: 5,
-		venue: 'Audi',
-		rule_list: [
-			'Hello',
-			'Then Hello',
-			'Then again',
-		],
-        "coordinators": [
-	      {
-	        "name": "coordinator_1",
-	        "phone": "+919532456987987",
-	        "email": "someone@gmail.com"
-	      },
-	      {
-	        "name": "coordinator_2",
-	        "phone": "+9198454654654",
-	        "email": "someone@gmail.com"
-	      }
-	    ],
-		prize: '10000',
-		activityId: 1,
-		url: '/events/1',
-	},
-	{
-		id: 2,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 1,
-		url: '/events/1',
-	},
-	{
-		id: 3,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-	},
-		{
-		id: 4,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 5,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 6,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-		{
-		id: 7,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 8,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 9,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 10,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 11,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 12,
-		title: 'Robo wars',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		startingDate: '1 June, 2017 @ 5:00p.m.',
-		endDate: '1 June, 2017 @ 6:00p.m.',
-		teamsize: 5,
-		activityId: 2,
-		url: '/events/1',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-]
-
-const subcategories = [
-	{
-		id: 1,
-		name: 'SAASC',
-		head: 'Someone Someone',
-		type: 1,
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 2,
-		name: 'Punjabi Editorial Board',
-		head: 'Someone Singh',
-		type: 1,
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-	},
-	{
-		id: 3,
-		name: 'Hindi Editorial Board',
-		head: 'Someone Sharma',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-		type: 1,
-	},
-	{
-		id: 4,
-		name: 'Robotics',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-		head: 'Someone geeky',
-		type: 2
-	},
-	{
-		id: 5,
-		name: 'Computer Science Society',
-		backgroundImageUrl: 'http://source.unsplash.com/random',
-		head: 'Someone geeky',
-		type: 2
-	}
-]
-
 const activities = [
-	{
-		id: 1,
-		title: 'Cultural',
-		imageUrl: 'Images/cover1.jpg',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-	},
-	{
-		id: 2,
-		title: 'Technical',
-		imageUrl: 'Images/cover2.jpg',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-	},
-	{
-		id: 3,
-		title: 'Lectures',
-		imageUrl: 'Images/cover3.jpg',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-	},
-	{
-		id: 4,
-		title: 'Workshops',
-		imageUrl: 'Images/cover4.jpg',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-	},
-	{
-		id: 5,
-		title: 'Shows',
-		imageUrl: 'Images/cover5.jpg',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-	}
-]
+  {
+    "parent_category": "Technical",
+    description: "The best of the brilliant minds will be surfaced and the innovations from the erudite will be discovered. For those crazy after the codes and passionate for the revv of an engine or the speed of a bot, PECFEST calls you to celebrate your zest for all things technical and explore the joy of never-before inventions, right here beyond this link.",
+    "sub_categories": [
+    ]
+  },
 
-export { events, activities, subcategories };
+  {
+    "parent_category": "Cultural",
+    description: "The dreamers, the artists and the liberals who maintain the merry spirits of the world; your energy will find a medium, your imagination- its reality, and your talent- a thriving purpose, as PECfest brings to you the events to surpass your own magic. Here you’ll find your fascinating challenges and the rules to go by.",
+    "sub_categories": [
+        {
+          id: 1,
+          "name": "NATYAMANCH",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 2,
+          "name": "NRITYAMANCH",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 3,
+          "name": "LITERARY ARTS",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 4,
+          "name": "SPEAKING ARTS",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 5,
+          "name": "DIGITAL DESIGN ART",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 6,
+          "name": "FINE ARTS",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 7,
+          "name": "MUSICAL ARTS",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        },
+        {
+          id: 8,
+          "name": "ENTREPRENEURICAL ARTS",
+          description: '',
+          backgroundImageUrl: 'http://source.unsplash.com/random',
+        }
+      ]
+    },
+  {
+    parent_category: "Lectures",
+    description: "",
+    sub_categories: [
+    ]
+  },
+  {
+    parent_category: "Workshops",
+    description: "",
+    sub_categories: [
+    ]
+  },
+  {
+    parent_category: "Shows",
+    description: "",
+    sub_categories: [
+    ]
+  }
+];
+
+function preprocessEvent(event) {
+  let coordinators = event.coordinators.split('~~');
+  coordinators = coordinators.map(coordinator => {
+    let name, phone, email;
+    if (coordinator.indexOf(';') !== -1) {
+      let splits = coordinator.split(';');
+
+      name = splits[0];
+      if (splits.length === 3) {
+        phone = splits[1];
+        email = splits[2];
+      } else if (splits.length === 2) {
+        phone = splits[1]
+      }
+    } else if (coordinator.indexOf(':') !== -1) {
+      let splits = coordinator.split(';');
+
+      name = splits[0];
+      if (splits.length === 3) {
+        phone = splits[1];
+        email = splits[2];
+      } else if (splits.length === 2) {
+        phone = splits[1]
+      }
+    }
+
+    return {
+      name, phone, email
+    }
+  });
+
+  event.coordinators = coordinators;
+
+
+  const rules = event.rulesList.split('.').map(rule => rule.trim() + '.').filter(rule => rule.length > 1);
+  event.rulesList = rules;
+
+  return event;
+}
+
+window._api = {
+  url: 'http://165.227.156.176:10001/',
+  getEventsForCategory(category, config) {
+    const events = [];
+
+    fetch(this.url + 'event/category/' + category.id)
+      .then(data => data.json())
+      .then(events => {
+        console.log(events);
+
+        if (events.ACK === 'SUCCESS') {
+          delete events.ACK;
+
+          const eventsArray = []
+          for (const event in events) {
+            eventsArray.push(events[event]);
+          }
+          config.onSuccess(eventsArray);
+        }
+        else
+          config.onFailed(events);
+      })
+      .catch(err => {
+        console.log("This should not happened. If you are dev, then please report this immediately");
+        config.onFailed(err);
+      });
+  },
+  getEvent(eventId, config) {
+    fetch(this.url + 'event/' + eventId)
+      .then(data => data.json())
+      .then(event => {
+        if (event.ACK === 'SUCCESS') {
+          delete event.ACK;
+
+          event = preprocessEvent(event);
+          console.log(event);
+          config.onSuccess(event);
+        } else {
+          config.onFailed(event);
+        }
+      })
+      .catch(err => {
+        console.log("This should not happened. If you are dev, then please report this immediately");
+        config.onFailed(err);
+      });
+  }
+}
+
+const api = window._api
+
+export { activities, api };

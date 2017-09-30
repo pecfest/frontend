@@ -6,6 +6,7 @@ export default class SubmitButton extends Component {
 		return (
 			<button
 				className="SubmitButton-button FormButton"
+				style={{ color: '#196070' }}
 				disabled={this.props.disabled} type="submit">Register</button>
 		)
 	}

@@ -6,7 +6,7 @@
 .Events-wrapper {
 	display: block;
 	max-width: 768px;
-	margin: auto;
+	margin: 0 auto 1em auto;
 	padding-top: 5em;
 	background-color: white;
 	color: #222122;

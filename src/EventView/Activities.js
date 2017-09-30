@@ -44,7 +44,7 @@ class Activity extends Component {
 					onWheel={this.handleMouseWheel}
 					>
 					<div className="Activity-title">
-						<h2 className="Activity-heading">{this.props.activity.title}</h2>
+						<h2 className="Activity-heading">{this.props.activity.parent_category}</h2>
 					</div>
 				</div>
 			</div>
@@ -59,7 +59,7 @@ class SelectedActivity extends Component {
 			<div className="SelectedActivity-wrapper">
 				<div className="SelectedActivity">
 					<div className="SelectedActivity-title">
-						{this.props.activity.title}
+						{this.props.activity.parent_category}
 					</div>
 					<br />
 					<Divider style={dividerStyle}/>
@@ -73,7 +73,7 @@ class SelectedActivity extends Component {
 					<Divider style={ dividerStyle }/>
 					<br />
 
-					<Link to={"/activities/" + this.props.activity.id + "/events"}
+					<Link to={"/activities/" + this.props.activity.parent_category + "/events"}
 							className="SelectedActivity-link">
 						Go to events <i className="fa fa-long-arrow-right" />
 					</Link>

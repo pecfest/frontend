@@ -5,6 +5,7 @@ input.TextInput-input {
 	margin: 0;
 	font-family: inherit;
 	font-weight: 700;
+	transition: color 1s;
 }
 
 input.TextInput-input:focus {
