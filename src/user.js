@@ -9,12 +9,21 @@ window._user = {
 	loggedIn: false,
 
 	isLoggedIn() {
-		return this.loggedIn;
+		if (window.localStorage) {
+			if (window.localStorage.getItem('pecfestId')) {
+				const pecfestId = window.localStorage.getItem('pecfestId')
+				if (pecfestId.length > 1) {
+					this.currentUser.pecfestId = pecfestId
+					return true
+				}
+			}
+		}
+		return false;
 	},
 
 	logout(userId, callback) {
 		if (window.localStorage) {
-			if (window.getItem('pecfestId')) {
+			if (window.localStorage.getItem('pecfestId')) {
 				window.setItem('pecfestId', '')
 				setTimeout(callback);
 			}

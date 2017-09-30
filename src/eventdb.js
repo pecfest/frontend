@@ -121,7 +121,7 @@ function preprocessEvent(event) {
 }
 
 window._api = {
-  url: 'http://165.227.156.176:10001/',
+  url: 'http://api.pecfest.in/',
   getEventsForCategory(category, config) {
     const events = [];
 
