@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Motion, spring } from 'react-motion';
+import { Link } from 'react-router-dom';
+
 import TextInput from './FormElements/TextInput';
 import { validateId } from './utils';
 import SignUpOrLogInForm from './SignUpOrLogInForm';
@@ -86,13 +88,11 @@ class RegisterEventInternal extends Component {
   }
 
   handleRegister = () => {
-    console.log('Hello');
     this.setState({ registering: false, done: true });
     this.props.onSuccess();
   }
 
   handleFailed = (error) => {
-    console.log(error);
     this.setState({ error: true, errMessage: (error.message || 'Unknown error occurred.')});
   }
 
@@ -265,9 +265,13 @@ export default class RegisterEvent extends Component {
             <div className="DialogBox" style={{ transform: `translateY(${style.h}px)`, opacity: 1 - style.h / 100 }}>
             {
               !this.state.loggedIn ?
-                <SignUpOrLogInForm
-                  onCancel={this.handleCancel}
-                  onLoggedIn={this.handleLoggedIn} /> :
+                (<div className="RegisterEvent">
+                  <RegisterEventHeader {...this.props} />
+                  <p>
+                  <Link to={"/register?continue=events/" + this.props.event.id}><strong>Login&nbsp;</strong></Link>
+                  to register for <strong>{this.props.event.name}</strong>. Or <button className="FormButton" style={{padding: 0}} onClick={this.handleCancel}><strong>Cancel</strong></button>
+                  </p>
+                </div>) :
                 <RegisterEventInternal
                   maxSize={this.props.maxSize}
                   minSize={this.props.minSize}

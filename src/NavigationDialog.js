@@ -1,35 +1,17 @@
 import React, { Component } from 'react';
 import {StaggeredMotion, Motion, spring } from 'react-motion';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import links from './links';
 
 import './NavigationDialog.css';
-
-const links = [
-	{
-		name: 'Home',
-		to: '/'
-	},
-	{
-		name: 'Events',
-		to: '/activities',
-	},
-	{
-		name: 'Sponsors',
-		to: '/sponsors',
-	},
-	{
-		name: 'Team',
-		to: '/team',
-	},
-	{
-		name: 'PECFEST 2016',
-		to: '/pecfest2016',
-	}
-]
 
 class Navigation extends Component {
 	getDefaultStyles() {
 		return links.map(link => ({ h: 0 }))
+	}
+
+	handleClick = link => {
+		this.props.onClick(link);
 	}
 
 	render() {
@@ -54,15 +36,27 @@ class Navigation extends Component {
 								{
 									styles.map((style, i) => {
 										const link = links[i];
+
+										if (link.type === 'external') {
+											return (
+												<a key={i}
+													className="Navigation-link"
+													href={link.to}
+													style={{ transform: `translateY(${101 - style.h}%)`, opacity: style.h / 100 }}
+													target="_blank"
+													>
+													{link.name}
+												</a>
+											)
+										}
 										return (
-											<Link key={i}
-												onClick={this.props.onClick}
+											<button key={i}
+												onClick={this.handleClick.bind(this, link.to)}
 												className="Navigation-link"
-												to={link.to}
 												style={{ transform: `translateY(${100 - style.h}%)`, opacity: style.h / 100}}
 												>
 												{link.name}
-											</Link>
+											</button>
 										)
 									})
 								}
@@ -75,7 +69,7 @@ class Navigation extends Component {
 	}
 }
 
-export default class NavigationDialog extends Component {
+class NavigationDialog extends Component {
 	state = {
 		initialValue: 0,
 		closing: false,
@@ -88,13 +82,19 @@ export default class NavigationDialog extends Component {
 	handleRest = () => {
 		if (this.state.closing) {
 			this.props.onClose();
+			if (this.state.linkSelected)
+				this.props.history.push(this.state.link);
 		} else {
 			this.setState({ opening: false })
 		}
 	}
 
-	handleClose = () => {
+	handleClose = (link) => {
 		this.setState({ initialValue: 90, finalValue: 0, closing: true });
+	}
+
+	handleClick = (link) => {
+		this.setState({ initialValue: 90, finalValue: 0, closing: true, link, linkSelected: true })
 	}
 
 	handleTouchStart = (event) => {
@@ -128,7 +128,7 @@ export default class NavigationDialog extends Component {
 		this._content = document.querySelector('.content');
 		return (
 			<Motion defaultStyle={{ y: this.state.initialValue }}
-				style={{ y: spring(this.state.finalValue, { precision: 1}) }}
+				style={{ y: spring(this.state.finalValue, { precision: 5}) }}
 				onRest={this.handleRest}>
 				{
 					value => {
@@ -144,7 +144,7 @@ export default class NavigationDialog extends Component {
 									onTouchEnd={this.handleTouchEnd}
 									onWheel={this.handleWheel}
 									style={{ width: `${ value.y }%`}}>
-									<Navigation loadingDialog={this.state.opening} onClick={this.handleClose} />
+									<Navigation loadingDialog={this.state.opening} onClick={this.handleClick} />
 
 									<button className="Button NavigationDialog-button"
 										onClick={this.handleClose}>
@@ -159,3 +159,5 @@ export default class NavigationDialog extends Component {
 		)
 	}
 }
+
+export default withRouter(NavigationDialog);

@@ -14,6 +14,7 @@ window._user = {
 				const pecfestId = window.localStorage.getItem('pecfestId')
 				if (pecfestId.length > 1) {
 					this.currentUser.pecfestId = pecfestId
+					this.loggedIn = true;
 					return true
 				}
 			}
@@ -24,9 +25,18 @@ window._user = {
 	logout(userId, callback) {
 		if (window.localStorage) {
 			if (window.localStorage.getItem('pecfestId')) {
-				window.setItem('pecfestId', '')
+				window.localStorage.setItem('pecfestId', '')
+				this.loggedIn = false;
 				setTimeout(callback);
 			}
+		}
+	},
+
+	loginLocal(user) {
+		this.currentUser = user;
+		this.loggedIn = true;
+		if (typeof window.localStorage !== 'undefined') {
+			window.localStorage.setItem('pecfestId', user.pecfestId)
 		}
 	},
 
@@ -38,12 +48,9 @@ window._user = {
 					config.onFailed(user);
 					return;
 				}
-				this.currentUser = user;
-				this.loggedIn = true;
-				if (typeof window.localStorage !== 'undefined') {
-					window.localStorage.setItem('pecfestId', user.pecfestId)
-				}
-				config.onSuccess(user);
+
+				this.loginLocal(user);
+				config.onSuccess(user.pecfestId);
 			})
 			.catch(err => {
 				console.log("This should not happen");
@@ -63,6 +70,7 @@ window._user = {
 			.then(res => {
 				if (res.ACK !== 'SUCCESS') {
 					config.onFailed(res);
+					return;
 				}
 
 				config.onSuccess(res);
@@ -85,14 +93,30 @@ window._user = {
 			.then(res => {
 				if (res.ACK !== 'SUCCESS') {
 					config.onFailed(res);
+					return;
 				}
 
+				this.loginLocal(res);
 				config.onSuccess(res.pecfestId);
 			})
 			.catch(err => {
 				console.log("This should not happen");
 				config.onFailed(err);
 			})
+	},
+
+	checkVerified(mobile, config) {
+		fetch(api.url + 'user/is_verified/' + mobile)
+			.then(data => data.json())
+			.then(json => {
+				if (json.ACK !== 'SUCCESS') {
+					config.onFailed()
+					return
+				}
+
+				config.onSuccess(json.verified)
+			})
+			.catch(config.onFailed)
 	},
 
 	registerEvent(event, users, leader, config) {

@@ -21,7 +21,7 @@ export default class LoginForm extends Component {
 
 	handleSuccess = (pecfestId) => {
 		this.setState({ error: false, loggingin: false, done: true })
-		setTimeout(this.props.onLogin, 1000);
+		this.props.onLogin(pecfestId);
 	}
 
 	handleClick = () => {
@@ -48,31 +48,26 @@ export default class LoginForm extends Component {
 			<div className="SignUpForm-wrapper">
 				<div className="SignUpForm">
 					<div className="SignUpForm-title">
-						<h1 style={{fontSize: '3.2em'}}>Login</h1>
+						<h1 style={{fontSize: '3.2em'}}>Your PECFEST ID</h1>
 					</div>
-
-					{
-						this.state.done ? <h1 style={{ fontSize: '3.2em' }}>Successfully logged in.</h1> :
-							<div className="SignUpForm-steps">
-								<div className="SignUpElement">
-									<input
-										ref={input => this.inputElement = input}
-										className="SignUpInput"
-										type="text"
-										style={style}
-										onChange={this.handleChange} />
-								</div>
-								<div className="SignUpElement">
-									<button
-										disabled={this.state.loggingin || this.state.error}
-										onClick={this.handleClick}
-										className="SignUpNextButton">
-										Login
-									</button>
-								</div>
-							</div>
-
-					}
+					<div className="SignUpForm-steps">
+						<div className="SignUpElement">
+							<input
+								ref={input => this.inputElement = input}
+								className="SignUpInput"
+								type="text"
+								style={style}
+								onChange={this.handleChange} />
+						</div>
+						<div className="SignUpElement">
+							<button
+								disabled={this.state.loggingin || this.state.error}
+								onClick={this.handleClick}
+								className="SignUpNextButton">
+								Login
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		)

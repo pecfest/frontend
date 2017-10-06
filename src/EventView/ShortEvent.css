@@ -58,12 +58,30 @@
 		border: none;
 		text-align: left;
 		box-shadow: none;
+		font-size: 1.5em;
 	}
+
 
 	.ShortEvent:after {
 		border-radius: none;
+		display: none;
 	}
+
+
+	.ShortEvent:hover {
+		font-size: 1.5em;
+	}
+
 }
+
+.ShortEvent-wrapper {
+	background-color: #196070;
+}
+
+.ShortEvent-background {
+	display: none;
+}
+
 
 .ShortEvent-coverphoto {
 }
@@ -84,16 +102,23 @@
 }
 
 .EventLinks-heading {
-	padding: 1em;
+	display: flex;
+	padding: 0.5em 1em;
+	align-items: center;
 	border-bottom: 1px solid #c2d6bd;
+	flex-direction: row;
+}
+
+.EventLinks-heading > small, .EventLinks-close {
+	display: block;
+	flex: 1;
 }
 
 .EventLinks-close {
 	border: none;
 	cursor: pointer;
-	position: absolute;
-	right: 1em;
 	background: none;
+	text-align: right;
 }
 
 .ComingSoon {

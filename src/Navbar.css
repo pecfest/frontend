@@ -1,9 +1,25 @@
 
-.Navbar {
-	display: block;
+.Navbar-wrapper {
+    position: absolute;
+    display: block;
+    top: 0;
+    margin: auto;
+    color: white;
+    width: 100%;
+    text-align: center;
 }
+
+.Navbar {
+	display: flex;
+	align-items: center;
+	max-width: 800px;
+	margin: auto;
+}
+
 
 .Navbar-link {
 	display: inline-block;
 	margin: 1em;
+	flex: 1;
+	text-transform: uppercase;
 }

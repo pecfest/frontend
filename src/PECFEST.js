@@ -30,7 +30,6 @@ export default class PECFEST extends Component {
 					</div>
 					<NavigationButton />
 				</div>
-
 			</BrowserRouter>
 		)
 	}

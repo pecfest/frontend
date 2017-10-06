@@ -1,8 +1,7 @@
-.FrontSlide-wrapper, .FakeSlide-wrapper {
+.FrontSlide-wrapper {
 	max-width: 1000px;
 	margin: auto;
 	display: block;
-	height: 100%;
 	text-align: center;
 }
 
@@ -10,7 +9,32 @@ h1.Title {
 	font-weight: 700;
 	font-size: 5em;
 	margin-bottom: 0;
+	margin-top:0 ;
 	color: lightgray;
+}
+
+.SocialNetworkingLinks {
+	display: block;
+	margin-top: 1em;
+}
+
+.SocialNetworkingLinks-list {
+	display: block;
+	margin: auto;
+}
+
+.SocialNetworkingLinks-link {
+	flex: 1em;
+	font-size: 2em;
+	margin: 1em;
+	display: inline-block;
+}
+
+
+@media screen and (max-width: 768px) {
+	h1.Title {
+		font-size: 3em;
+	}
 }
 
 .FrontSlide-Timeleft > small, .FrontSlide-Dates > small {
@@ -24,8 +48,7 @@ h1.Title {
 
 .FrontSlide {
 	opacity: 1;
-	transform: translateY(100%);
-	transform-origin: center;
+	transition: all 1s;
 }
 
 .FrontSlide-register {
@@ -37,11 +60,86 @@ h1.Title {
 	padding: 1em;
 }
 
+
+.FrontSlide-Dates {
+	color: white;
+}
+
+.UserInfo {
+	width: 100%;
+}
+
+.UserInfo-user {
+	width: 100%;
+}
+
+.FestButton {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: 700;
+	font-size: 1em;
+	color: rgba(255, 255, 255, 1);
+	padding: 0;
+	transition: color 300ms;
+}
+
 .divider {
-	position: relative;
-	display: block;
-	width: 70%;
-	height: 2px;
-	background-color: lightgray;
+	display: 'block';
 	margin: auto;
+	max-width: 30em;
+}
+
+.FestButton:hover {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-2 {
+  position: relative;
+  display: block;
+  max-width: 7em;
+  padding: 1em;
+  overflow: hidden;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+.btn-2:before, .btn-2:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  left: 0;
+  box-sizing: border-box;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-2:before {
+  right: -50%;
+  border-right: 50px solid transparent;
+  border-bottom: 80px solid #196070;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.btn-2:after {
+  left: -50%;
+  border-left: 50px solid transparent;
+  border-top: 80px solid #196070;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.btn-2:hover {
+  color: white;
+}
+.btn-2:hover:before {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.btn-2:hover:after {
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
 }

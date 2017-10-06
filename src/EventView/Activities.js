@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { StaggeredMotion, spring } from 'react-motion';
 import Divider from '../Divider';
+import ComingSoon from '../ComingSoon';
 import Dialog from '../Dialog';
+import anime from 'animejs';
 
 import { activities } from '../eventdb';
 
@@ -14,7 +16,11 @@ class Activity extends Component {
 	}
 
 	handleClick = () => {
-		this.props.onActivitySelect(this.props.activity);
+		if (!this.props.selected)
+			this.props.onActivitySelect(this.props.activity);
+		else {
+			this.handleClose();
+		}
 	}
 
 	handleMouseOver = () => {
@@ -25,26 +31,96 @@ class Activity extends Component {
 		this.setState({ mouseOver: false });
 	}
 
-	handleMouseWheel = event => {
+	handleClose = () => {
 
-		if (event.deltaY > event.deltaX) {
-			if (event.deltaY > 0) {
-				this.props.onActivitySelect(this.props.activity);
-			}
+		if (window.checkIfMobile()) {
+			return this.props.onActivitySelect(this.props.activity);
+		}
+		this.anim = anime.timeline()
+		this.anim.add({
+			targets: '.slideUp',
+			opacity: [ 1, 0],
+			easing: 'easeOutExpo',
+			duration: 300,
+		}).add({
+			targets: '.Expanded-box',
+			height: [400, 0],
+			easing: 'easeOutExpo',
+			duration: 500,
+		});
+
+		this.timer = setTimeout(() => this.refs.activity.style.flex = "1", 300);
+
+		this.anim.complete = this.props.onActivitySelect;
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.selected != this.props.selected && this.props.selected && !window.checkIfMobile()) {
+			this.anim = anime.timeline()
+			this.anim.add({
+				targets: '.Expanded-box',
+				height: [ 0, 400 ],
+				easing: 'easeOutExpo',
+				duration: 500,
+			}).add({
+				targets: '.slideUp',
+				opacity: [ 0, 1],
+				translateY: [ 100, 0 ],
+				easing: 'easeOutExpo',
+				delay: (el, i, l) => i * 100
+			})
 		}
 	}
 
+	componentWillUnmount() {
+		clearTimeout(this.timer);
+	}
+
 	render() {
+		const style = { flex: this.state.mouseOver ? 1.1 : 1 };
+		const dividerStyle= { display: 'block', marginLeft: '0', backgroundColor: 'rgba(165, 97, 44, 0.6)'};
+
+		if (this.props.selected) {
+			style.flex = 5;
+		}
 		return (
-			<div className="Activity-wrapper" id={this.props.id} style={this.props.style}>
+			<div className="Activity-wrapper" ref="activity"
+				 id={this.props.id}
+				 style={Object.assign({}, style, this.props.style)}
+				>
 				<div className="Activity"
 					onMouseOver={this.handleMouseOver}
 					onMouseOut={this.handleMouseOut}
 					onClick={this.handleClick}
 					onWheel={this.handleMouseWheel}
 					>
-					<div className="Activity-title">
-						<h2 className="Activity-heading">{this.props.activity.parent_category}</h2>
+					<div className="vertically-aligned">
+						<div className="Activity-title">
+							<h2 className="Activity-heading">{this.props.activity.parent_category}</h2>
+						</div>
+
+						{
+							this.props.selected ?
+								<div className="Expanded-box">
+									<div className="SelectedActivity-description slideUp">
+										<p>{
+											this.props.activity.description.length === 0 ?
+											<ComingSoon /> :
+											this.props.activity.description
+										}</p>
+									</div>
+
+									<br />
+									<br />
+									{
+										this.props.activity.description.length === 0 ? "" :
+										<Link to={"/activities/" + this.props.activity.parent_category + "/events"}
+												className="SelectedActivity-link slideUp">
+											Go to events <i className="fa fa-long-arrow-right" />
+										</Link>
+									}
+									</div> : ""
+						}
 					</div>
 				</div>
 			</div>
@@ -66,17 +142,23 @@ class SelectedActivity extends Component {
 					<br />
 
 					<div className="SelectedActivity-description">
-						{this.props.activity.description}
+						{
+							this.props.activity.description.length === 0 ?
+							<ComingSoon /> :
+							this.props.activity.description
+						}
 					</div>
 
 					<br />
 					<Divider style={ dividerStyle }/>
 					<br />
-
-					<Link to={"/activities/" + this.props.activity.parent_category + "/events"}
-							className="SelectedActivity-link">
-						Go to events <i className="fa fa-long-arrow-right" />
-					</Link>
+					{
+						this.props.activity.description.length === 0 ? "" :
+						<Link to={"/activities/" + this.props.activity.parent_category + "/events"}
+								className="SelectedActivity-link">
+							Go to events <i className="fa fa-long-arrow-right" />
+						</Link>
+					}
 				</div>
 			</div>
 		)
@@ -86,11 +168,16 @@ class SelectedActivity extends Component {
 export default class Activities extends Component {
 	state = {
 		activitySelected: false,
-		activity: {}
+		activity: {},
+		loading: true,
 	}
 
 	handleActivitySelect = activity => {
-		this.setState({ activitySelected: true, activity });
+		let activitySelected = true;
+		if (activity.parent_category === this.state.activity.parent_category)
+			activitySelected = !this.state.activitySelected;
+
+		this.setState({ activitySelected, activity })
 	}
 
 	handleTransition = (value, opposite) => {
@@ -100,61 +187,43 @@ export default class Activities extends Component {
 	}
 
 	componentDidMount() {
+		this.anim = anime.timeline();
+		this.anim.add({
+			targets: '.Activity-wrapper',
+			opacity: [0 , 1],
+			translateY: [ '100%', '0%'],
+			delay: (el, i, l) => i * 100,
+			easing: 'easeOutExpo'
+		}).add({
+			targets: '.Activity-title',
+			opacity: [0, 1],
+			translateY: ['100px', '0px'],
+			delay: (el, i, l) => i * 50,
+		})
 	}
 
 	componentWillUnmount() {
 	}
 
+
 	render() {
 		return (
 			<div className="Activities-wrapper wrapper">
 				<div className="Activities" ref="activities">
-				<StaggeredMotion
-					defaultStyles={activities.map(() => ({ h : 0 }))}
-					styles={
-						prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
-							return i == 0 ?
-								({ h: spring(100) }) :
-								({ h: spring(prevInterpolatedStyles[i-1].h)} )
+					{
+						activities.map((activity, i) => {
+							return (
+								<Activity
+									activity={activity}
+									onActivitySelect={this.handleActivitySelect}
+									key={i}
+									selected={this.state.activitySelected && this.state.activity.parent_category === activity.parent_category}
+									id={"Activity-" + i}
+								/>
+							);
 						})
 					}
-				>
-					{
-
-						styles => (
-							<div>
-								{
-									styles.map((style, i) => {
-										return (
-											<Activity
-												activity={activities[i]}
-												onActivitySelect={this.handleActivitySelect}
-												style={{
-													transform: `translateY(${100 - style.h}%)`,
-													opacity: style.h / 100
-												}}
-												key={i}
-												id={"Activity-" + i}
-											/>
-										);
-									})
-								}
-							</div>
-						)
-					}
-				</StaggeredMotion>
 				</div>
-					{
-						this.state.activitySelected ?
-							<Dialog onClose={() => this.setState({ activitySelected: false })}
-								onTransition={this.handleTransition}
-								backgroundGradient={this.state.activity.imageUrl}
-							>
-								<SelectedActivity activity={this.state.activity}
-									/>
-							</Dialog>
-						: ""
-					}
 			</div>
 		)
 	}

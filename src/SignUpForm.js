@@ -33,6 +33,10 @@ class GetName extends Component {
 		this.setState({ name: target.value });
 	}
 
+	get() {
+		return this.state.name;
+	}
+
 	render() {
 		return (
 			<div className="SignUpElement">
@@ -49,6 +53,10 @@ class GetNumber extends Component {
 	state = {
 		mobile: '',
 		error: true,
+	}
+
+	get() {
+		return this.state.mobile;
 	}
 
 	handleNext = ({ target }) => {
@@ -85,6 +93,10 @@ class GetCollege extends Component {
  		this.props.done({ college: this.state.college });
 	}
 
+	get() {
+		return this.state.college;
+	}
+
 	isValid() {
 		return this.state.college.length !== 0;
 	}
@@ -111,6 +123,10 @@ class GetEmail extends Component {
 	state = {
 		email: '',
 		error: true,
+	}
+
+	get() {
+		return this.state.email;
 	}
 
 	handleNext = ({ target }) => {
@@ -162,20 +178,11 @@ class GetGender extends Component {
 }
 
 class GetAccomodationDetails extends Component {
-	state = {
-		gender: '',
-		disabled: true,
-	}
-
-	handleChange = ({ target }) => {
-		this.setState({ accomodation: target.value, disabled: ['Male', 'Female', 'Other'].indexOf(target.value) == -1 });
-	}
-
 	render() {
 		return (
-			<div className="SignUpElement">
-				<input type="checkbox" name="accomodation" className="SignUpElement-checkbox" onChange={this.handleChange} />
-				<p className="SignUpElement-description">Do you need accomodation?</p>
+			<div className="SignUpElement" style={{ marginTop: '2em'}}>
+				<input type="checkbox" name="accomodation" className="SignUpElement-checkbox" onChange={this.props.done} />
+				<label htmlFor="accomodation" className="SignUpElement-description">Do you need accomodation?</label>
 			</div>
 		)
 	}
@@ -210,6 +217,9 @@ class VerifyMobileNumber extends Component {
 	render() {
 		return (
 			<div className="SignUpElement">
+				<div className="SignUpElement-description">
+					<p>OTP has been sent to your mobile.</p>
+				</div>
 				<input type="text"
 					disabled={this.state.checking}
 					placeholder="Enter OTP"
@@ -240,7 +250,7 @@ class FinalStep extends Component {
 					Now you can login and start registering for events.
 				</p>
 				<div className="Control-buttons">
-					<button className="SignUpNextButton" onClick={this.props.done}>
+					<button className="SignUpNextButton" onClick={() => this.props.done(this.props.pecfestId)}>
 						Continue
 					</button>
 				</div>
@@ -255,7 +265,8 @@ class SignUpSteps extends Component {
 		done: false,
 		submitting: false,
 		disabled: true,
-		user: { gender: 'Male' }
+		gender: "Male",
+		accomodation: 0,
 	}
 
 	handleDone = (prop) => {
@@ -286,27 +297,65 @@ class SignUpSteps extends Component {
 		if (errors.length > 0) {
 			const message = errors.join(', ') + (errors.length == 1 ? ' is ' : ' are ') + 'invalid.'
 			this.setState({ disabled: true, error: true, message: message });
+			return;
 		}
 
-		user.signUp(this.state.user, {
+		const newUser = {
+			name: this.refs.name.get(),
+			email: this.refs.email.get(),
+			mobile: this.refs.mobile.get(),
+			college: this.refs.college.get(),
+			accomodation: this.state.accomodation,
+			gender: this.state.gender
+		}
+
+		this.setState({ user: newUser } );
+
+
+		user.signUp(newUser, {
 			onSuccess: (res) => {
 				this.setState({ submitting: false, otp: true });
 			},
 			onFailed: (err) => {
+				if (typeof err.ACK !== 'undefined') {
+					if (err.ACK === 'ALREADY') {
+						this.setState({ message: 'Account already exists. Verifying...' })
+						user.checkVerified(this.state.user.mobile, {
+							onSuccess: verified => {
+								console.log(verified);
+								if (verified) {
+									// send user to the login page
+									this.props.onContinueToLogin()
+								} else {
+									this.setState({ submitting: false, otp: true })
+								}
+							},
+							onFailed: (err) => {
+								this.setState({ submitting: false, error: true, message: 'Unknown error occurred' });
+							}
+						})
+					}
+				}
 				this.setState({ submitting: false, error: true,  disabled: true, message: err.message || 'Some unknown error has occurred.'})
 			}
 		});
 
-		this.setState({ submitting: true, submitMessage: 'Sending OTP to your mobile.' });
+		this.setState({ submitting: true, submitMessage: 'Verifying account...' });
 	}
 
-	handleChange = event => {
-		const user = Object.assign({}, this.state.user, { gender: event.target.value });
+
+	handleAccomo = ({ target }) => {
+		const user = { accomodation: target.checked ? 1 : 0 };
 		this.setState({ user, disabled: false })
 	}
 
+
+	handleChange = event => {
+		this.setState({ gender: event.target.value, disabled: false })
+	}
+
 	handleId = id => {
-		this.setState({ pecfestId: id, done: true, otp: false, submitting: false });
+		this.props.onSignUp(id);
 	}
 
 	renderLoadingOrOtp() {
@@ -336,13 +385,14 @@ class SignUpSteps extends Component {
 					this.state.submitting || this.state.otp || this.state.done ?
 						this.renderLoadingOrOtp() :
 						<form autoComplete='off' onSubmit={this.handleSubmit} className="SignUpSteps">
+							{ this.state.error ? <p className="SignUpForm-ErrorMessage">{this.state.message}</p> : ""}
 							<GetName ref="name" done={this.handleDone} />
 							<GetEmail ref="email" done={this.handleDone} />
 							<GetNumber ref="mobile" done={this.handleDone} />
 							<GetCollege ref="college" done={this.handleDone} />
 							<GetGender ref="gender" onChange={this.handleChange} />
+							<GetAccomodationDetails ref="accomodation" done={this.handleAccomo} />
 							<br />
-							{ this.state.error ? <p className="SignUpForm-ErrorMessage">{this.state.message}</p> : ""}
 							<ControlButtons disabled={this.state.disabled} />
 						</form>
 				}
@@ -359,7 +409,7 @@ export default class SignUpForm extends Component {
 					<div className="SignUpForm-title">
 						<h1 style={{fontSize: '3.2em'}}>Sign Up</h1>
 					</div>
-					<SignUpSteps onSignUp={this.props.onSignUp} />
+					<SignUpSteps onSignUp={this.props.onSignUp} onContinueToLogin={this.props.onContinueToLogin} />
 				</div>
 			</div>
 		)

@@ -7,14 +7,22 @@ import BackgroundCanvas from './BackgroundCanvas';
 import './SlideShow.css';
 
 export default class SlideShow extends Component {
-	render() {
+	state = {
+		loading: true,
+	}
 
+	handleComplete = () => {
+		this.setState({ loading: false });
+		console.log("Completed");
+	}
+
+	render() {
 		return (
 			<div className="SlideShow-wrapper" style={{ color: 'white' }}>
 				<div className="Slide">
-					<FrontSlide />
+					<FrontSlide loading={this.state.loading} />
 				</div>
-				<BackgroundCanvas />
+				<BackgroundCanvas onComplete={this.handleComplete} />
 			</div>
 		)
 	}

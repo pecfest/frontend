@@ -90,7 +90,7 @@ class ShortEvent extends Component {
 		const category = this.props.subcategory;
 
 		const bstyle = {
-			background: `url(${category.backgroundImageUrl}) center center no-repeat /cover`
+			backgroundColor: `#196070`
 		}
 
 		const fstyle = {};
@@ -109,11 +109,10 @@ class ShortEvent extends Component {
 				onTouchStart={()=> this.setState({ mouseOver: true })}
 				onTouchEnd={() => this.setState({mouseOver: false })}
 				onTouchCancel={() => this.setState({ mouseOver: false })}
+				onClick={this.handleClick}
 				id={this.props.id}
 			>
-				<div className="ShortEvent" ref="subcategory"
-					onClick={this.handleClick}
-						>
+				<div className="ShortEvent" ref="subcategory">
 					<div className="ShortEvent-background" style={backgroundStyle} />
 					<div className="ShortEvent-description">
 						<div className="ShortEvent-title">{category.name.toUpperCase()}</div>

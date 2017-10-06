@@ -1,10 +1,34 @@
 import React, { Component } from 'react';
+import anime from 'animejs';
+
 import './PecFest2016.css'
 
 var refreshboxElement, clicked;
 
 function start() {
     var i = 0;
+
+    if (typeof window.YT === 'undefined')
+      var player;
+      player = new window.YT.Player('muteYouTubeVideoPlayer', {
+        videoId: 'kMotFEvb0xc', // YouTube Video ID
+        playerVars: {
+          autoplay: 1,        // Auto-play the video on load
+          controls: 0,        // Show pause/play buttons in player
+          showinfo: 0,        // Hide the video title
+          modestbranding: 1,  // Hide the Youtube Logo
+          loop: 1,            // Run the video in a loop
+          fs: 0,              // Hide the full screen button
+          cc_load_policy: 0, // Hide closed captions
+          iv_load_policy: 3,  // Hide the Video Annotations
+          autohide: 0         // Hide video controls when playing
+        },
+        events: {
+          onReady: function(e) {
+            e.target.mute();
+          }
+        }
+    });
 
     var events = document.getElementById("events");
     var eve_count = 0;
@@ -13,73 +37,27 @@ function start() {
     var foot = document.getElementById("foot");
     var foot_count = 0;
     var complete = 0;
-    var int1 = setInterval(function() {
-        events.innerHTML = "Events : " + eve_count.toString();
-        if (eve_count < 50) eve_count += 1;
-        else { eve_count = 50;
-            complete++; }
-        school.innerHTML = "Schools : " + school_count.toString() + "+";
-        if (school_count < 330) school_count += 12;
-        else { school_count = 330;
-            complete++; }
-        foot.innerHTML = "Foot Fall : " + foot_count.toString() + "+";
-        if (foot_count < 25000) foot_count += 400;
-        else { foot_count = 25000;
-            complete++; }
-        if (complete >= 3) {
-            clearInterval(int1);
-        }
-    }, 30);
-
-    var player = document.getElementById("video-background");
-
-    var Vid = document.getElementById('vid_source');
-
-    var video_source = [
-        ["Videos/Amit.mp4", "video/mp4"],
-        ["Videos/Crowd.mp4", "video/mp4"],
-        ["Videos/Drums.mp4", "video/mp4"],
-        ["Videos/Groovz.mp4", "video/mp4"]
-    ];
-
-    clicked = function(num) {
-        Vid.src = video_source[num][0];
-        Vid.type = video_source[num][1];
-        player.load();
-        player.play();
-        i = num;
-        i += 1;
-        i %= 4;
-        var element = document.getElementById("top");
-        element.classList.remove("top");
-        void element.offsetWidth;
-        element.classList.add("top");
-        var element = document.getElementById("left");
-        element.classList.remove("left");
-        void element.offsetWidth;
-        element.classList.add("left");
-        var element = document.getElementById("bottom");
-        element.classList.remove("bottom");
-        void element.offsetWidth;
-        element.classList.add("bottom");
-        var element = document.getElementById("right");
-        element.classList.remove("right");
-        void element.offsetWidth;
-        element.classList.add("right");
-        var element = document.getElementById("inner-box");
-        element.classList.remove("inner-box");
-        void element.offsetWidth;
-        element.classList.add("inner-box");
+    var counts = {
+      eve: 0,
+      school: 0,
+      foot: 0,
     }
 
-    refreshboxElement = setInterval(function() {
-        i += 1;
-        i %= 4;
-        Vid.src = video_source[i][0];
-        Vid.type = video_source[i][1];
-        player.load();
-        player.play();
-    }, 5000);
+    var anim = anime({
+      targets: counts,
+      eve: 50,
+      school: 350,
+      foot: 25000,
+      duration: 3000,
+      easing: 'easeInQuad',
+    });
+
+    anim.update = ({progress}) => {
+      events.innerHTML = 'Events: ' + counts.eve.toFixed() + '+';
+      school.innerHTML = 'Schools: '  + counts.school.toFixed() + '+';
+      foot.innerHTML = 'Footfall: ' + counts.foot.toFixed() + '+';
+    }
+
 }
 
 export default class PecFest2016 extends Component {
@@ -89,7 +67,11 @@ export default class PecFest2016 extends Component {
   }
 
   componentDidMount() {
-    start();
+    try {
+      start();
+    } catch (e) {
+      return;
+    }
   }
 
   componentWillUnmount() {
@@ -100,9 +82,7 @@ export default class PecFest2016 extends Component {
 
     return (
       <div className="PecFest2016">
-        <video autoPlay loop id="video-background" muted>
-          <source id="vid_source" src="Videos/Amit.mp4" type="video/mp4" />
-        </video>
+        <div id="muteYouTubeVideoPlayer"></div>
         <div className="filter" style={{ overflowX:'hidden', zIndex: 0 }}>
           <div className="desc">
             <div className="text" id="pecfest-title" style={{ top:'20%', left:'13%'}}>PECFEST 2016</div>
@@ -119,7 +99,6 @@ export default class PecFest2016 extends Component {
               </ul>
           </div>
         </div>
-        <canvas id="inner-box" className="inner-box" style={{position:'absolute', left:'40%', top:'40%',width:'20%', height:'20%', border: '2px solid #ffffff', opacity:0}} />
       </div>
     )
   }
