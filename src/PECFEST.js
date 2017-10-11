@@ -3,6 +3,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Activities from './EventView/Activities';
 import Events from './EventView/Events';
 import PecFest2016 from './PecFest2016';
+import Hospi from './Hospi';
+import Team from './Team';
+import Lectures from './Lectures';
 import Event from './Event';
 import IntroSlides from './IntroSlides';
 import SignUpOrLogInForm from './SignUpOrLogInForm';
@@ -10,6 +13,14 @@ import SignUpOrLogInForm from './SignUpOrLogInForm';
 import NavigationButton from './NavigationButton';
 
 import './PECFEST.css';
+
+class NotFound extends Component {
+	render() {
+		return (
+			<h2>Page you are looking for does not exist.</h2>
+		)
+	}
+}
 
 export default class PECFEST extends Component {
 	render() {
@@ -26,7 +37,10 @@ export default class PECFEST extends Component {
 						/>
 						<Route path="/events/:eventId" exact component={Event} />
 						<Route path="/pecfest2016" exact component={PecFest2016} />
+						<Route path="/hospitality" exact component={Hospi} />
+						<Route path="/team" exact component={Team} />
 						<Route path="/register" exact component={SignUpOrLogInForm} />
+						<Route path="/activities/Lectures" exact component={Lectures} />
 					</div>
 					<NavigationButton />
 				</div>

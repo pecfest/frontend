@@ -114,7 +114,7 @@ class Activity extends Component {
 									<br />
 									{
 										this.props.activity.description.length === 0 ? "" :
-										<Link to={"/activities/" + this.props.activity.parent_category + "/events"}
+										<Link to={"/activities/" + this.props.activity.parent_category + (this.props.activity.parent_category == 'Lectures' ? "" : "/events")}
 												className="SelectedActivity-link slideUp">
 											Go to events <i className="fa fa-long-arrow-right" />
 										</Link>

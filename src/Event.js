@@ -36,7 +36,8 @@ function populate_event_card(curr_event) {
         }
         document.getElementById("event_prize").innerHTML = prizes_content;
     } else {
-        document.getElementById("event_prize_wrapper").style.display = 'none';
+        document.getElementById("trophy").style.display = 'none';
+        document.getElementById("Something").style.display = 'none';
     }
     // info tab
     var tabs_content = "";
@@ -182,10 +183,10 @@ class Event extends Component {
                     </span>
                 </div>
                 <div id="event_prize_wrapper">
-                    <div className="eventPrize" style={{}}>
+                    <div className="eventPrize" id="trophy" style={{}}>
                         <img src={trophy} width="48" height="48" style={{marginRight: '1rem', marginTop: '-5px'}} />
                     </div>
-                    <div className="eventPrize">
+                    <div className="eventPrize" id="Something">
                         <span style={{}} id="prizes_worth"><span style={{color:'#F0F0F0'}}>▆▆▆▆▆▆▆▆▆</span></span>
                         <br />
                         <span style={{}} id="event_prize"><span style={{color:'#F0F0F0'}}>▆▆▆▆</span></span>

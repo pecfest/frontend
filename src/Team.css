@@ -1,0 +1,111 @@
+.Team-card {
+    border: 0px;
+    padding: 0.5rem;
+    margin: 2rem;
+    box-sizing: border-box;
+    width: 240px;
+    height: 320px;
+    border-radius: 10px !important;
+    /*background: #e9e9e9 !important;*/
+    box-shadow: rgba(0, 0, 0, 0.66) 0 3px 10px 0;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 1s;
+    background-repeat: none;
+    background-size: cover;
+}
+
+* {
+    font-family: inherit;
+}
+
+.Team-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.66) 0 5px 20px 0;
+}
+
+.card_inner {
+    border: 0.5px solid rgba(255, 255, 255, 0.7);
+    height: 100%;
+    border-radius: 7px;
+    position: relative;
+    color: white;
+}
+
+.name {
+    font-size: 1.1em;
+    margin-bottom: 0px;
+    margin-top: auto;/*
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3),
+    1px -1px 0 rgba(0, 0, 0, 0.3),
+    -1px 1px 0 rgba(0, 0, 0, 0.3),
+    1px 1px 0 rgba(0, 0, 0, 0.3);*/
+}
+
+.designation {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0px;
+}
+
+.card_content_bottom {
+    position: absolute;
+    bottom: 0px;
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.email {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.email a {
+    color: white;
+}
+
+.phone {
+    font-style: italic;
+    font-size: 15px;
+}
+
+.phone a {
+    color: white;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3),
+    1px -1px 0 rgba(0, 0, 0, 0.3),
+    -1px 1px 0 rgba(0, 0, 0, 0.3),
+    1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.phone a:hover {
+    color: #e9e9e9;
+}
+
+.email a:hover {
+    color: #e9e9e9;
+}
+
+.heading {
+    color: #6C6C6C;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+.row {
+    width: 100%;
+}
+
+.container-fluid {
+    max-width: 800px;
+    margin: 50px auto 0 auto;
+}
+
+.col {
+    flex: 1;
+}

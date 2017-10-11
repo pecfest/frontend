@@ -53,8 +53,7 @@ function preprocessEvent(event) {
   event.coordinators = coordinators;
 
 
-  const rules = [ event.rulesList ]
-  event.rulesList = rules;
+  event.rulesList = [event.rulesList];
 
   return event;
 }

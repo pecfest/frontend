@@ -12,10 +12,10 @@ const links = [
 	// 	name: 'Sponsors',
 	// 	to: '/sponsors',
 	// },
-	// {
-	// 	name: 'Team',
-	// 	to: '/team',
-	// },
+	 {
+	 	name: 'Team',
+	 	to: '/team',
+	 },
 	{
 		name: 'PECFEST 2016',
 		to: '/pecfest2016',
@@ -24,7 +24,12 @@ const links = [
 		name: 'Marketing Brochure',
 		to: '/assets/marketingBrochure.pdf',
 		type: 'external'
+	},
+	{
+		name: 'Hospitality',
+		to: '/hospitality'
 	}
+
 ]
 
 export default links;
