@@ -13,6 +13,8 @@ import './Event.css';
 
 function populate_event_card(curr_event) {
     document.getElementById("register_button").style.display = '';
+    
+    document.getElementById("register_button2").style.display = '';
     document.getElementById("event_name").innerHTML = curr_event.name;
     if (curr_event.shortDescription != undefined && curr_event.shortDescription.length > 1) {
         document.getElementById("event_info").style.display = '';
@@ -192,6 +194,8 @@ class Event extends Component {
                         <span style={{}} id="event_prize"><span style={{color:'#F0F0F0'}}>▆▆▆▆</span></span>
                     </div>
                     <button className="eventPrize" disabled={this.state.registered || this.state.loading} onClick={this.handleClick} className="btn" style={{marginRight:0, marginLeft:'auto', display:'none'}} id="register_button">Register</button>
+                    <button className="eventPrize" disabled={this.state.registered || this.state.loading} onClick={this.handleClick} className="btn" style={{marginRight:12, marginLeft:'auto', display:'none'}} id="register_button2">Help</button>
+                
                 </div>
             </div>
             <div className="card-tabs">
@@ -203,7 +207,7 @@ class Event extends Component {
             </div>
             <div className="card-content grey lighten-4" id="event_description">
                 <div id="test4">
-                    <p><span style={{color:'#F0F0F0'}}>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆</span></p>
+                    <p><span style={{color:'#F0F0F0'}}>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆</span></p>         
                 </div>
                 <div id="test5"><span style={{color:'#F0F0F0'}}></span></div>
                 <div id="test6"><span style={{color:'#F0F0F0'}}></span></div>
