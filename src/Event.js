@@ -14,7 +14,7 @@ import './Event.css';
 function populate_event_card(curr_event) {
     document.getElementById("register_button").style.display = '';
     
-    document.getElementById("register_button2").style.display = '';
+    //document.getElementById("register_button2").style.display = '';
     document.getElementById("event_name").innerHTML = curr_event.name;
     if (curr_event.shortDescription != undefined && curr_event.shortDescription.length > 1) {
         document.getElementById("event_info").style.display = '';

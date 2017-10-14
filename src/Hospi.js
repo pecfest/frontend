@@ -34,6 +34,10 @@ export default class Hospi extends Component {
 
     render() {
         return (
+    <div className="Hospi">
+    <div className="Hospi-heading">
+    <h1>Hospitality</h1>
+    </div>
     <div className="tabPanel-widget">
     <label for="tab-1" tabindex="0"></label>
       <input id="tab-1" type="radio" name="tabs" checked="true" aria-hidden="true"></input>
@@ -113,6 +117,7 @@ export default class Hospi extends Component {
         </div>
         </div>
     </div>
+  </div>
   </div>
         )
     }
