@@ -8,10 +8,10 @@ const links = [
 		name: 'Events',
 		to: '/activities',
 	},
-	// {
-	// 	name: 'Sponsors',
-	// 	to: '/sponsors',
-	// },
+	 {
+	 	name: 'Sponsors',
+	 	to: '/sponsors',
+	 },
 	 {
 	 	name: 'Team',
 	 	to: '/team',

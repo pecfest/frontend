@@ -9,7 +9,8 @@ import Lectures from './Lectures';
 import Event from './Event';
 import IntroSlides from './IntroSlides';
 import SignUpOrLogInForm from './SignUpOrLogInForm';
-
+import Sponsors from './napp';
+import sponsors from './sponsors';
 import NavigationButton from './NavigationButton';
 
 import './PECFEST.css';
@@ -39,6 +40,7 @@ export default class PECFEST extends Component {
 						<Route path="/pecfest2016" exact component={PecFest2016} />
 						<Route path="/hospitality" exact component={Hospi} />
 						<Route path="/team" exact component={Team} />
+						<Route path="/sponsors" exact component={() => <Sponsors data={sponsors} />} />
 						<Route path="/register" exact component={SignUpOrLogInForm} />
 						<Route path="/activities/Lectures" exact component={Lectures} />
 					</div>
