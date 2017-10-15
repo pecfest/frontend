@@ -323,7 +323,7 @@ export default class Team extends Component {
         <div className="row heading">
             <div className="col">
                 <div className="designation">Creative</div>
-                <div className="Team-card" style={{ backgroundImage: "url(/team/ashish.jpg)"}}>
+                <div className="Team-card" style={{ backgroundImage: "url(/team/Ashish.jpg)"}}>
                     <div className="card_inner">
                         <div className="pad"></div>
                         <div className="card_content_top"></div>
@@ -383,7 +383,7 @@ export default class Team extends Component {
         <div className="row heading">
             <div className="col">
                 <div className="designation">Online Publicity and Website Management</div>
-                <div className="Team-card" style={{ backgroundImage: "url(/team/Mitesh_kakkar.jpg)"}}>
+                <div className="Team-card" style={{ backgroundImage: "url(/team/Mitesh_Kakkar.jpg)"}}>
                     <div className="card_inner">
                         <div className="pad"></div>
                         <div className="card_content_top"></div>
