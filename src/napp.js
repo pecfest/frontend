@@ -19,7 +19,7 @@ class Sponsors extends Component{
     }
 
 
-	render()
+		render()
 	{
 		window.j = 0;
 
@@ -27,7 +27,10 @@ class Sponsors extends Component{
 
 		window.data = this.props.data;
 		console.log(typeof(data));
-		const imglist = window.data.map((image,i) => {return (<img key={i} className="col-1" src={image.image} alt="" />);});
+		const imglist = window.data.map((image,i) => {
+			if(image.link===''){return (<img key={i} className="col-1" src={image.image} alt="" />);}
+			else {return <div><a href={image.link}><img key={i} className="col-1" src={image.image} alt="" /> </a></div>}
+		});
 
 		window.type_of_spons = [];
 
@@ -71,6 +74,7 @@ class Sponsors extends Component{
 		);
 	}
 }
+
 
 
 
