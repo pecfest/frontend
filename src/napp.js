@@ -26,10 +26,11 @@ class Sponsors extends Component{
 		function fin_ki_value(obj){return obj.id>=(window.j+1);}
 
 		window.data = this.props.data;
-		console.log(typeof(data));
+		console.log(window.data);
 		const imglist = window.data.map((image,i) => {
-			if(image.link===''){return (<img key={i} className="col-1" src={image.image} alt="" />);}
-			else {return <div><a href={image.link}><img key={i} className="col-1" src={image.image} alt="" /> </a></div>}
+			console.log(image);
+			if(image.link===''){return (<img key={i} className="col-1" src={image.image} alt={image.name} title={image.name} />);}
+			else {return <div key={i}><a href={image.link} target="_blank"><img key={i} className="col-1" src={image.image} alt={image.name} title={image.name} /> </a></div>}
 		});
 
 		window.type_of_spons = [];
@@ -52,25 +53,25 @@ class Sponsors extends Component{
 
 		const final_arr = img_concat.map((imag,i) => {
 			return (
-					<div id="holder-div">
+					<div id="holder-div" key={i}>
 						<div className="App-indi-headers">
-						{window.type_of_spons[window.j++]}	
+						{window.type_of_spons[window.j++]}
 						</div>
 						<div className="flex-css" key={i}>
 							{imag.concat(" ")}
 						</div>
 					</div>
 					);
-		
+
 		});
 
-		
+
 
 		return (
 			<div id="main-div">
 			<div className="App-main-header" ><h1>Sponsors</h1></div>
 			{final_arr}
-			</div> 
+			</div>
 		);
 	}
 }
