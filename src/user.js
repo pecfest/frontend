@@ -8,6 +8,31 @@ window._user = {
 
 	loggedIn: false,
 
+	preferences: {},
+	preferencesCollected: false,
+
+	getPreference(name) {
+		if (window.localStorage) {
+			if (!this.preferencesCollected) {
+				if (window.localStorage.getItem('preferences'))
+					this.preferences = JSON.parse(window.localStorage.getItem('preferences'))
+			}
+
+			console.log(this.preferences)
+			return this.preferences[name];
+		} else {
+			return null
+		}
+	},
+
+	savePreference(name, value) {
+		this.preferences[name] = value;
+
+		if (window.localStorage) {
+			window.localStorage.setItem('preferences', JSON.stringify(this.preferences))
+		}
+	},
+
 	isLoggedIn() {
 		if (window.localStorage) {
 			if (window.localStorage.getItem('pecfestId')) {
@@ -81,13 +106,13 @@ window._user = {
 			})
 	},
 
-	verifyOtp(otp, mobile, config) {
+	verifyOtp(otp, email, config) {
 		fetch(api.url + 'user/verify', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ otp, mobile }),
+			body: JSON.stringify({ otp, email }),
 		})
 			.then(data => data.json())
 			.then(res => {
@@ -119,6 +144,24 @@ window._user = {
 			.catch(config.onFailed)
 	},
 
+	sendIDToEmail(email, config) {
+		fetch(api.url + 'user/forgot_pecfestid', {
+			body: JSON.stringify({ email }),
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(data => data.json())
+			.then(res => {
+				if (res.ACK === 'SUCCESS') {
+					config.onSuccess(res);
+				} else {
+					config.onFailed(res);
+				}
+			})
+			.catch(config.onFailed);
+	},
+
 	registerEvent(event, users, leader, config) {
 		fetch(api.url + 'event/register', {
 			method: 'post',
@@ -141,7 +184,7 @@ window._user = {
 
 	isRegistered(eventId) {
 		return false;
-	}
+	},
 }
 
 let user = window._user;

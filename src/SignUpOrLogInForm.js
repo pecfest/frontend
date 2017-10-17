@@ -3,6 +3,8 @@ import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
 import { withRouter } from 'react-router-dom';
 
+import user from './user';
+
 import './SignUpOrLoginForm.css';
 
 class SignUpOrLoginForm extends Component {
@@ -34,9 +36,16 @@ class SignUpOrLoginForm extends Component {
   }
 
   handleLogin = (pecfestId) => {
-    console.log(pecfestId);
     this.setState({ loggedIn: true, pecfestId: pecfestId })
     setTimeout(this.handleCancel, 1000);
+  }
+
+  handleSignup = (pecfestId) => {
+    this.setState({ loggedIn: true, pecfestId: pecfestId })
+    user.login(pecfestId, {
+      onSuccess: this.handleCancel,
+      onFailed: this.handleCancel,
+    })
   }
 
   render() {
@@ -54,11 +63,11 @@ class SignUpOrLoginForm extends Component {
         </div>
         <div className="Divider" />
         {
-          this.state.loggedIn ? <h1 style={{ fontSize: '3.2em' }}>You are logged in as <strong>{this.state.pecfestId}</strong></h1> :
+          this.state.loggedIn ? <h1 style={{ }}>You are logged in as <strong>{this.state.pecfestId}</strong></h1> :
             <div className="SignUpOrLoginForm-form">
             {
               this.state.form == 'signup' ?
-                  <SignUpForm onSignUp={this.handleLogin} onContinueToLogin={this.handleClick.bind(this, 'login')} /> :
+                  <SignUpForm onSignUp={this.handleSignup} onContinueToLogin={this.handleClick.bind(this, 'login')} /> :
                   <LoginForm onLogin={this.handleLogin} />
             }
             </div>

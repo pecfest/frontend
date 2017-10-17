@@ -1,0 +1,30 @@
+.FeedbackDialog-wrapper {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 1em;
+}
+
+.Survey-button {
+	font-size: 10px;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.7);
+	flex: 1;
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.Survey-button:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.Survey-button:active {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Survey-button:nth-child(2) {
+	margin-left: 10px;
+}

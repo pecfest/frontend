@@ -195,6 +195,7 @@ export default [
 	},
 	{
 		link : 'https://www.facebook.com/hawkeyedphotographers/?fref=ts',
+		link : '',
 		id : 11,
 		name : 'Hawkeyed',
 		image : photopartner1,

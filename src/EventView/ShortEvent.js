@@ -55,9 +55,14 @@ class EventLinks extends Component {
 						(this.state.loading ? <h3 className="ComingSoon">Loading events...</h3> :
 							eventsToShow.map((event, i) => (
 								<Link key={i} to={'/events/' + event.id} className="EventLink">
-									{
-										event.name
-									}
+									<div className="EventLink-heading">
+										{event.name}
+									</div>
+									<div className="EventLink-shortDescription">
+										{event.shortDescription}
+										{event.shortDescription.trim().length > 0 && event.prize.length > 0 ? <span style={{fontWeight: 'bold'}}>&nbsp; · &nbsp;</span> : "" }
+										{event.prize.length > 0 ? `Prize: ${event.prize.split(';')[0]}` : ""}
+									</div>
 								</Link>
 							)))
 				}

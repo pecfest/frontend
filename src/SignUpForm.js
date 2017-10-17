@@ -314,7 +314,7 @@ class SignUpSteps extends Component {
 
 		user.signUp(newUser, {
 			onSuccess: (res) => {
-				this.setState({ submitting: false, otp: true });
+				this.setState({ submitting: false, otp: true, pecfestId: res.pecfestId });
 			},
 			onFailed: (err) => {
 				if (typeof err.ACK !== 'undefined') {
@@ -367,15 +367,11 @@ class SignUpSteps extends Component {
 			);
 		}
 
-		if (this.state.done) {
+		// if (this.state.done) {
 			return (
 				<FinalStep pecfestId={this.state.pecfestId} done={this.props.onSignUp} />
 			)
-		}
-
-		return (
-			<VerifyMobileNumber mobile={this.state.user.mobile} done={this.handleId} />
-		)
+		// }
 	}
 
 	render() {

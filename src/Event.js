@@ -13,7 +13,7 @@ import './Event.css';
 
 function populate_event_card(curr_event) {
     document.getElementById("register_button").style.display = '';
-    
+
     //document.getElementById("register_button2").style.display = '';
     document.getElementById("event_name").innerHTML = curr_event.name;
     if (curr_event.shortDescription != undefined && curr_event.shortDescription.length > 1) {
@@ -46,7 +46,12 @@ function populate_event_card(curr_event) {
     var desc_content = "";
     if (curr_event.details != undefined) {
         tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#details\" class=\"active teal-text\">Details</a></li>";
-        desc_content = desc_content + "<div id=\"details\" style=\"\"><p>" + curr_event.details + "</p></div>";
+        desc_content = desc_content + "<div id=\"details\" style=\"\"><p>" + curr_event.details + "</p>";
+        if (curr_event.pdfUrl) {
+            desc_content += `<br /><a href="${curr_event.pdfUrl}">Download problem statement</a></div>`
+        } else {
+            desc_content += '</div>'
+        }
     }
     if (curr_event.problem_statement != undefined) {
         tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#problem\" class=\"teal-text\">Problem Statement</a></li>";
@@ -195,7 +200,7 @@ class Event extends Component {
                     </div>
                     <button className="eventPrize" disabled={this.state.registered || this.state.loading} onClick={this.handleClick} className="btn" style={{marginRight:0, marginLeft:'auto', display:'none'}} id="register_button">Register</button>
                     <button className="eventPrize" disabled={this.state.registered || this.state.loading} onClick={this.handleClick} className="btn" style={{marginRight:12, marginLeft:'auto', display:'none'}} id="register_button2">Help</button>
-                
+
                 </div>
             </div>
             <div className="card-tabs">
@@ -207,7 +212,7 @@ class Event extends Component {
             </div>
             <div className="card-content grey lighten-4" id="event_description">
                 <div id="test4">
-                    <p><span style={{color:'#F0F0F0'}}>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆</span></p>         
+                    <p><span style={{color:'#F0F0F0'}}>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<br/>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆</span></p>
                 </div>
                 <div id="test5"><span style={{color:'#F0F0F0'}}></span></div>
                 <div id="test6"><span style={{color:'#F0F0F0'}}></span></div>

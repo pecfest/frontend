@@ -126,3 +126,9 @@
 	color: rgba(0, 0, 0, 0.5);
 }
 
+.EventLink-shortDescription {
+	font-size: 0.8em;
+	color: rgba(0, 0, 0, 0.8);
+	margin-top: 0.3em;
+}
+

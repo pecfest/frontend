@@ -12,6 +12,7 @@ import SignUpOrLogInForm from './SignUpOrLogInForm';
 import Sponsors from './napp';
 import sponsors from './sponsors';
 import NavigationButton from './NavigationButton';
+import FeedbackDialogBox from './FeedbackDialogBox';
 
 import './PECFEST.css';
 
@@ -45,6 +46,7 @@ export default class PECFEST extends Component {
 						<Route path="/activities/Lectures" exact component={Lectures} />
 					</div>
 					<NavigationButton />
+					<FeedbackDialogBox />
 				</div>
 			</BrowserRouter>
 		)

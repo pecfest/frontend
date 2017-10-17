@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Motion, spring } from 'react-motion';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 
 import TextInput from './FormElements/TextInput';
 import { validateId } from './utils';
@@ -89,11 +90,11 @@ class RegisterEventInternal extends Component {
 
   handleRegister = () => {
     this.setState({ registering: false, done: true });
-    this.props.onSuccess();
+    setTimeout(this.props.onSuccess, 1500);
   }
 
   handleFailed = (error) => {
-    this.setState({ error: true, errMessage: (error.message || 'Unknown error occurred.')});
+    this.setState({ registering: false, error: true, errMessage: (error.message || 'Unknown error occurred.')});
   }
 
   handleSubmit = event => {
@@ -175,6 +176,26 @@ class RegisterEventInternal extends Component {
         </div>
       );
     });
+
+    if (this.state.registering) {
+      return (
+        <div className="RegisterEvent">
+          <RegisterEventHeader { ...this.props} />
+          <Loader color="gray" />
+        </div>
+      )
+    }
+
+    if (this.state.done) {
+      return (
+        <div className="RegisterEvent">
+          <RegisterEventHeader {...this.props} />
+          <div className="success">
+            <p>Successfully registered for <span className="RegisterEvent-eventname">{this.props.event.name}</span>.</p>
+          </div>
+        </div>
+      )
+    }
 
     return (
         <div className="RegisterEvent">
