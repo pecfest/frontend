@@ -1,16 +1,15 @@
 .Team-card {
     border: 0px;
-    padding: 0.5rem;
     margin: 2rem;
     box-sizing: border-box;
     width: 240px;
     height: 320px;
-    border-radius: 10px !important;
+    border-radius: 3px !important;
     /*background: #e9e9e9 !important;*/
-    box-shadow: rgba(0, 0, 0, 0.66) 0 3px 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 2px 5px 0;
     margin-left: auto;
     margin-right: auto;
-    transition: all 1s;
+    transition: all 0.3s;
     background-repeat: none;
     background-size: cover;
 }
@@ -20,13 +19,11 @@
 }
 
 .Team-card:hover {
-    box-shadow: rgba(0, 0, 0, 0.66) 0 5px 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.66) 0 5px 10px 0;
 }
 
 .card_inner {
-    border: 0.5px solid rgba(255, 255, 255, 0.7);
     height: 100%;
-    border-radius: 7px;
     position: relative;
     color: white;
 }
@@ -42,7 +39,7 @@
 }
 
 .designation {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     margin-top: auto;
     margin-bottom: 0px;
@@ -55,9 +52,9 @@
     width: 100%;
     box-sizing: border-box;
     padding: 0.5rem;
-    background: rgba(0, 0, 0, 0.7);
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    background-color: #196070;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .email {
@@ -103,9 +100,20 @@
 
 .container-fluid {
     max-width: 800px;
-    margin: 50px auto 0 auto;
+    margin: auto;
 }
 
 .col {
     flex: 1;
+}
+
+.Team-header {
+    padding: 1em;
+    background-color: #196070;
+    color: #e6ffe0;
+}
+
+.Team-header > h1 {
+    margin: 0;
+    color: #e6ffe0;
 }

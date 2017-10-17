@@ -22,7 +22,7 @@ export default class Team extends Component {
 
         this.restore = document.body.style.overflow;
         document.body.style.overflow = 'auto';
- 
+
     }
 
     componentWillUnmount() {
@@ -33,6 +33,9 @@ export default class Team extends Component {
     render() {
         return (
     <div className="container-fluid" id="parent_">
+        <div className="Team-header">
+            <h1>Team</h1>
+        </div>
         <div className="row heading">
             <div className="col">
                 <div className="designation">Convener</div>
@@ -103,13 +106,13 @@ export default class Team extends Component {
                                 </div>
                         </div>
                     </div>
-                    
+
 
                 </div>
-                
+
             </div>
         </div>
-        
+
         <div className="row heading">
             <div className="col">
                 <div className="designation">Marketing (Branding and Sponsorship)</div>
@@ -212,7 +215,7 @@ export default class Team extends Component {
                         <div className="card_content_top"></div>
                         <div className="card_content_bottom">
                             <div className="name">Japmanjeet Singh Gill</div>
-                            
+
                             </div>
                     </div>
                 </div>
@@ -227,8 +230,8 @@ export default class Team extends Component {
                             </div>
                     </div>
                 </div>
-        </div>        
-        
+        </div>
+
         <div className="row heading">
             <div className="col">
                 <div className="designation">Security and Discipline</div>
@@ -263,7 +266,7 @@ export default class Team extends Component {
 
         <div className="row">
             <div className="col">
-                
+
             </div>
         </div>
         <div className="row heading">
@@ -293,7 +296,7 @@ export default class Team extends Component {
                 </div>
             </div>
         </div>
-        
+
         <div className="row heading">
             <div className="col">
                 <div className="designation">Publicity (Offline and Branding)</div>
@@ -320,7 +323,7 @@ export default class Team extends Component {
                     </div>
             </div>
         </div>
-        
+
         <div className="row heading">
             <div className="col">
                 <div className="designation">Creative</div>
@@ -337,7 +340,7 @@ export default class Team extends Component {
             </div>
             <div className="col">
                 <div className="designation">Public Relations and Media</div>
-                
+
                 <div className="Team-card" style={{ backgroundImage: "url(/team/Aarushi_Gupta.jpg)"}}>
                     <div className="card_inner">
                         <div className="pad"></div>
@@ -351,7 +354,7 @@ export default class Team extends Component {
                 </div>
             </div>
         </div>
-        
+
         <div className="row heading">
             <div className="col">
                 <div className="designation">Hospitality &amp; Logistics</div>
@@ -397,11 +400,11 @@ export default class Team extends Component {
                 </div>
             </div>
         </div>
-        
+
     </div>
-            
-        
-       
+
+
+
         )
     }
 }
