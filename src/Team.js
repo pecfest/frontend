@@ -130,12 +130,13 @@ export default class Team extends Component {
                 </div>
             </div>
             <div className="col">
-                <div className="Team-card" style={{ backgroundImage: "url(/team/placeholder.jpg)"}}>
+                <div className="Team-card" style={{ backgroundImage: "url(/team/pallabh.jpg)"}}>
                     <div className="card_inner">
                         <div className="pad"></div>
                         <div className="card_content_top"></div>
                         <div className="card_content_bottom">
                             <div className="name">Pallabh Singh</div>
+                            <div className="phone">7837442166</div>
                             </div>
                     </div>
                 </div>
