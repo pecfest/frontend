@@ -41,7 +41,7 @@ article.Lecture > span {
 	display: flex;
 	flex-direction: column;
 	background-color: #196070;
-	color: lightgray;
+	color: rgba(255, 255, 255, 0.7);
 	overflow: auto;
 }
 
@@ -116,6 +116,7 @@ article.Lecture > span {
 		display: flex;
 		flex-direction: column-reverse;
 		height: auto;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 	}
 
 	.Lecture-slide {
@@ -124,6 +125,12 @@ article.Lecture > span {
 
 	.Lectures {
 		border: none;
+	}
+
+	.Lecture-part:nth-child(even) {
+		padding-top: 1em;
+		background-color: #196070;
+		border-top: 1px solid rgba(0, 0, 0, 0.5);
 	}
 
 	.Lecture-background {

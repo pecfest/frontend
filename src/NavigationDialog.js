@@ -128,7 +128,7 @@ class NavigationDialog extends Component {
 		this._content = document.querySelector('.content');
 		return (
 			<Motion defaultStyle={{ y: this.state.initialValue }}
-				style={{ y: spring(this.state.finalValue, { precision: 5}) }}
+				style={{ y: spring(this.state.finalValue, { stiffness: 300, damping: 30 }) }}
 				onRest={this.handleRest}>
 				{
 					value => {

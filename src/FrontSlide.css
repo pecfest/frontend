@@ -2,6 +2,7 @@
 	max-width: 1000px;
 	margin: auto;
 	display: block;
+	transition: all 1s;
 	text-align: center;
 }
 

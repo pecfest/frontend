@@ -279,7 +279,7 @@ export default class RegisterEvent extends Component {
 
   render() {
     return (
-      <Motion onRest={this.handleRest} defaultStyle={{h: this.state.closing ? 0 : 100}} style={{ h: spring(this.state.closing ? 100 : 0, { stiffness: 225, damping: 40 }) }}>
+      <Motion onRest={this.handleRest} defaultStyle={{h: this.state.closing ? 0 : 100}} style={{ h: spring(this.state.closing ? 100 : 0, { stiffness: 300, damping: 30 }) }}>
       {
         style => {
           return (

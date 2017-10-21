@@ -15,3 +15,44 @@
 	width: 100vw;
 	height: 100vh;
 }
+
+.Controls {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 101;
+	text-align: center;
+	margin-bottom: 1.4em;
+	animation-name: control;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+
+@keyframes control {
+	0% {
+		transform: scale(1, 1);
+	}
+
+	100% {
+		transform: scale(1.2, 1,2);
+	}
+}
+
+.Controls > button {
+	cursor: pointer;
+	font-size: 1em;
+}
+.Controls > button {
+	width: 2em;
+	height: 2em;
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	transform: rotateZ(-135deg);
+}
+
+.Controls:hover {
+	transform: scale(1.2, 1.2);
+}

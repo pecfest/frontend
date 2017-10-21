@@ -103,6 +103,10 @@ export default class FrontSlide extends Component {
 		})
 	}
 
+	shouldComponentUpdate(nextProps) {
+		return this.props.loading != nextProps.loading;
+	}
+
 	render() {
 		return (
 			<div className="FrontSlide-wrapper">

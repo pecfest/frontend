@@ -48,7 +48,7 @@ function populate_event_card(curr_event) {
         tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#details\" class=\"active teal-text\">Details</a></li>";
         desc_content = desc_content + "<div id=\"details\" style=\"\"><p>" + curr_event.details + "</p>";
         if (curr_event.pdfUrl) {
-            desc_content += `<br /><a href="${curr_event.pdfUrl}">Download problem statement</a></div>`
+            desc_content += `<br /><a class="statementLink" href="${curr_event.pdfUrl}">Download problem statement</a></div>`
         } else {
             desc_content += '</div>'
         }
@@ -74,28 +74,22 @@ function populate_event_card(curr_event) {
             desc_content = desc_content + "</p></div>";
         }
     }
-    if (curr_event.venue != undefined && curr_event.date != undefined) {
-        tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#date\" class=\"teal-text\">Venue and Date</a></li>";
-        if (curr_event.venue == "" || curr_event.date == "") {
-            desc_content = desc_content + "<div id=\"date\"><p><center><i style=\"color:#a7a7a7;\">To Be Decided</i></center></p></div>";
-        } else {
-            desc_content = desc_content + "<div id=\"date\"><p>Venue: " + curr_event.venue + "<br/>Date: " + curr_event.date + "</p></div>";
-        }
-    } else if (curr_event.venue == undefined && curr_event.date != undefined) {
-        tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#date\" class=\"teal-text\">Date</a></li>";
-        if (curr_event.date == "") {
-            desc_content = desc_content + "<div id=\"date\"><p><center><i style=\"color:#a7a7a7;\">To Be Decided</i></center></p></div>";
-        } else {
-            desc_content = desc_content + "<div id=\"date\"><p>" + curr_event.date + "</p></div>";
-        }
-    } else if (curr_event.venue != undefined && curr_event.date == undefined) {
-        tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#date\" class=\"teal-text\">Venue</a></li>";
-        if (curr_event.venue == "") {
-            desc_content = desc_content + "<div id=\"date\"><p><center><i style=\"color:#a7a7a7;\">To Be Decided</i></center></p></div>";
-        } else {
-            desc_content = desc_content + "<div id=\"date\"><p>" + curr_event.venue + "</p></div>";
-        }
+
+    tabs_content = tabs_content + `<li class="tab"><a href="#date" class="teal-text">Venue and Date</a></li>`;
+    desc_content += `<div id="date">`
+    if (curr_event.location == '') {
+        desc_content += `<div class="Location">Venue: <span class="toBeDecided">To be decided</span></div>`
+    } else {
+        desc_content += `<div class="Location">Venue: <span class="Decided">${curr_event.location}</span></div>`
     }
+
+
+    if (curr_event.day == '0') {
+        desc_content += `<div class="Date">Time: <span class="toBeDecided">To be decided<span></div>`
+    } else {
+        desc_content += `<div class="Date"><span class="Decided">On Day ${curr_event.day} ${curr_event.time != '0' ? ' @ ' + curr_event.time : ''}</span></div>`
+    }
+    desc_content += '</div>'
     if (curr_event.coordinators != undefined) {
         tabs_content = tabs_content + "<li class=\"tab\"><a href=\"#contacts\" class=\"teal-text\">Contacts</a></li>";
         desc_content = desc_content + "<div id=\"contacts\"><div class=\"row\">";

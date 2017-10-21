@@ -18,8 +18,7 @@ class Sponsors extends Component{
 
     }
 
-
-		render()
+	render()
 	{
 		window.j = 0;
 

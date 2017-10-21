@@ -114,7 +114,8 @@ class Activity extends Component {
 									<br />
 									{
 										this.props.activity.description.length === 0 ? "" :
-										<Link to={"/activities/" + this.props.activity.parent_category + (this.props.activity.parent_category == 'Lectures' ? "" : "/events")}
+										<Link to={"/activities/" + this.props.activity.parent_category +
+													(this.props.activity.parent_category == 'Lectures' || this.props.activity.parent_category == 'Shows' ? "" : "/events")}
 												className="SelectedActivity-link slideUp">
 											Go to events <i className="fa fa-long-arrow-right" />
 										</Link>
@@ -211,7 +212,7 @@ export default class Activities extends Component {
 			<div className="Activities-wrapper wrapper">
 				<div className="Activities" ref="activities">
 					{
-						activities.map((activity, i) => {
+						window._activities.activities.map((activity, i) => {
 							return (
 								<Activity
 									activity={activity}

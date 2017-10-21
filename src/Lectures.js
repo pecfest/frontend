@@ -4,6 +4,32 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './Lectures.css';
 
+class LectureDesc extends Component {
+	render() {
+		const lecture = this.props.lecture;
+		return (
+			<div className="Lecture-content" key={lecture.id}>
+				<div className="Lecture-heading">
+					<h2 className="Lecture-name">{lecture.name}</h2>
+					<h3 className="Lecture-lecturer">By <span className="Lecture-lecturerName">{lecture.lecturer}</span></h3>
+				</div>
+				<div className="Lecture-smallDesc">
+					<div className="Lecture-date">On {lecture.date}</div>
+					<div className="Lecture-venue">Location: {lecture.venue}</div>
+				</div>
+				<div className="Lecture-details">
+					<p className="Lecture-description" dangerouslySetInnerHTML={{
+						__html: lecture.description
+					}} />
+					<div className="Lecture-poster">
+						<a href={lecture.posterUrl} target="blank_">Download poster</a>
+					</div>
+				</div>
+			</div>
+		)
+	}
+}
+
 class Lecture extends Component {
 	render() {
 		const lecture = this.props.lecture;
@@ -15,24 +41,7 @@ class Lecture extends Component {
 					transitionEnterTimeout={500}
 					transitionLeaveTimeout={500}
 					>
-					<div className="Lecture-content" key={lecture.id}>
-						<div className="Lecture-heading">
-							<h2 className="Lecture-name">{lecture.name}</h2>
-							<h3 className="Lecture-lecturer">By <span className="Lecture-lecturerName">{lecture.lecturer}</span></h3>
-						</div>
-						<div className="Lecture-smallDesc">
-							<div className="Lecture-date">On {lecture.date}</div>
-							<div className="Lecture-venue">Location: {lecture.venue}</div>
-						</div>
-						<div className="Lecture-details">
-							<p className="Lecture-description" dangerouslySetInnerHTML={{
-								__html: lecture.description
-							}} />
-							<div className="Lecture-poster">
-								<a href={lecture.posterUrl} target="blank_">Download poster</a>
-							</div>
-						</div>
-					</div>
+					<LectureDesc lecture={lecture} />
 				</ReactCSSTransitionGroup>
 				<ReactCSSTransitionGroup
 					component={(props) => <div className="Lecture-part">{props.children}</div>}
@@ -51,7 +60,7 @@ class Lecture extends Component {
 export default class Lectures extends Component {
 	state = {
 		current: 0,
-		lectures: activities.find(activity => activity.parent_category == 'Lectures').sub_categories,
+		lectures: window._activities.activities.find(activity => activity.parent_category == 'Lectures').sub_categories,
 	}
 
 	handleNext = () => {
@@ -90,9 +99,15 @@ export default class Lectures extends Component {
 						</div>
 					</div> : ""
 				}
-				<div className="Lecture-slide">
-					<Lecture lecture={this.state.lectures[this.state.current]} key={this.state.current} />
-				</div>
+				{
+					window.checkIfMobile() ?
+					<div className="LecturesOnMobile">
+						{ this.state.lectures.map(lecture => <Lecture key={lecture.id} lecture={lecture} />)}
+					</div> :
+					<div className="Lecture-slide">
+						<Lecture lecture={this.state.lectures[this.state.current]} key={this.state.current} />
+					</div>
+				}
 			</div>
 		)
 	}

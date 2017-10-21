@@ -13,6 +13,7 @@ import Sponsors from './napp';
 import sponsors from './sponsors';
 import NavigationButton from './NavigationButton';
 import FeedbackDialogBox from './FeedbackDialogBox';
+import MegaShows from './MegaShows/MegaShows';
 
 import './PECFEST.css';
 
@@ -32,6 +33,7 @@ export default class PECFEST extends Component {
 					<div className="content">
 						<Route path="/" exact component={IntroSlides} />
 						<Route path="/activities" exact component={Activities} />
+						<Route path="/activities/Lectures" exact component={Lectures} />
 						<Route
 							path="/activities/:activityId/events"
 							exact
@@ -43,7 +45,7 @@ export default class PECFEST extends Component {
 						<Route path="/team" exact component={Team} />
 						<Route path="/sponsors" exact component={() => <Sponsors data={sponsors} />} />
 						<Route path="/register" exact component={SignUpOrLogInForm} />
-						<Route path="/activities/Lectures" exact component={Lectures} />
+						<Route path="/activities/Shows" exact component={MegaShows} />
 					</div>
 					<NavigationButton />
 					<FeedbackDialogBox />

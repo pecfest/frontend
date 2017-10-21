@@ -14,8 +14,6 @@ code {
     font-weight: 700 !important;
     font-style: normal !important;
     margin-right: 1em !important;
-    margin-top: 1em !important;
-    flex-grow: 1;
 }
 
 #prizes_worth {
@@ -49,6 +47,7 @@ min-height: 6rem;*/
 
 #event_prize {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .eventPrize {
