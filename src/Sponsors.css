@@ -1,77 +1,147 @@
+#sponsors_f1_container {
+  position: relative;
+  margin: 1em auto;
+  z-index: 1;
+}
+#sponsors_f1_container {
+  perspective: 1000;
+}
+#sponsors_f1_card {
+  /*width: 100%;*/
+  transform-style: preserve-3d;
+  transition: all 300ms linear;
+}
+#sponsors_f1_container:hover #sponsors_f1_card {
+  transform: rotateY(180deg);
+  /*box-shadow: -5px 5px 5px #aaa;*/
+}
+.sponsors_face {
+  /*position: absolute;*/
+ /* width: 100%;*/
+  height: 110px;
+  backface-visibility: hidden;
+}
+.sponsors_face.back {
+  /*display: block;*/
+  transform: rotateY(180deg);
+  /*box-sizing: border-box;*/
+  /*padding: 10px;*/
+  color: black;
+  background-color: #e6ffe0;
+  margin-top: -120px;
+  text-align: center;
+}
+
+
+.sponsors_props_for_p{
+  padding-top: 1em;
+}
+
+
+
+
+
+.sponsors_App {
+  text-align: center;
+  background-color: #333;
+  padding-bottom: 70px;
+}
+
 * {
   box-sizing : border-box;
 }
 
-.dummy{
+.sponsors_dummy{
   height: 0px;
 }
 
-#main-div{
+#sponsors_main-div{
   max-width: 1000px;
   margin:auto;
 }
 
 
-.col-1 { margin:1em;display: block;height: 100px;}
+.sponsors_col-1 {
+  margin:1em;
+  display: block;
+  height: 110px;
+}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
 
-.flex-css{
+.sponsors_App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.sponsors_flex-css{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-/*@media screen and (max-width: 800px) {
-  .flex-css {
+@media screen and (max-width: 800px) {
+  .sponsors_flex-css {
     flex-direction: column;
     margin: auto;
   }
 
-  .col-1 {
+  .sponsors_col-1 {
     display: block;
     margin: auto;
   }
-}*/
+}
 
-.leftspace{
+.sponsors_leftspace{
   margin-left: 8.5em;
+}
+
+.sponsors_App-main-header {
+  padding: 1em;
+  text-align:left;
+  background-color: #196070;
 }
 
 .App-main-header {
   text-align:left;
   padding: 1em;
-  background-color: #196070;
 }
 
-.App-main-header > h1 {
+.sponsors_App-main-header > h1 {
   padding: 0;
   margin: 0;
   color: #e6ffe0;
 }
 
-.App-indi-headers{
+.sponsors_App-indi-headers{
   background-color: #e6ffe0;
   color:#196070;
   font-size: 20px;
   text-align: center;
 }
 
-#holder-div {
-  margin: 0 0 1em 0;
-}
-
-.App-intro {
+.sponsors_App-intro {
   font-size: large;
 }
 
-.row-sponsors{
+.sponsors_row{
   display: inline;
 }
 
-.img{
+.sponsors_img{
   width:100%;
 }
 
-.margin{
+.sponsors_margin{
   margin-right: 5px;
   margin-top: 5px;
   border-style: solid;
@@ -82,3 +152,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.flex-css{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#holder-div {
+  margin: 0 0 1em 0;
+}
+

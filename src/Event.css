@@ -8,12 +8,15 @@
 code {
     border-radius: 3px;
     border: 1px #FFBA00 solid;
-    color : #ff9800 !important;
+    color : #ff9800 ;
     font-family: inherit;
     padding: 2px;
-    font-weight: 700 !important;
-    font-style: normal !important;
-    margin-right: 1em !important;
+    font-weight: 700 ;
+    font-style: normal ;
+    margin-right: 1em ;
+}
+p > a {
+    text-decoration: underline;
 }
 
 #prizes_worth {
@@ -55,12 +58,12 @@ min-height: 6rem;*/
 }
 
 *[disabled] {
-    color: gray !important;
-    cursor: default !important;
+    color: gray ;
+    cursor: default ;
 }
 
 *[disabled]:hover {
-    color: gray !important;
+    color: gray ;
 }
 
 #event_prize {

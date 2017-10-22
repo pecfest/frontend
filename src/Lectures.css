@@ -13,6 +13,14 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
+.Lecture-description > a {
+	text-decoration: underline;
+}
+
+.Lecture-description > a:hover {
+	color: rgba(255, 255, 255, 1);
+}
+
 article.Lecture > span {
 	display: block;
 }

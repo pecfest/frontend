@@ -75,3 +75,7 @@
   transform: rotateZ(-45deg);
 }
 
+.MegaShowSlide {
+  height: 100vh;
+}
+
