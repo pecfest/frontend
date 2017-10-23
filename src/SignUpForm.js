@@ -345,8 +345,8 @@ class SignUpSteps extends Component {
 
 
 	handleAccomo = ({ target }) => {
-		const user = { accomodation: target.checked ? 1 : 0 };
-		this.setState({ user, disabled: false })
+		const user = { accomodation: target.checked - 0 };
+		this.setState({ accomodation: user.accomodation, disabled: false })
 	}
 
 
@@ -375,6 +375,7 @@ class SignUpSteps extends Component {
 	}
 
 	render() {
+		console.log(this.state);
 		return (
 			<div className="SignUpForm-steps">
 				{

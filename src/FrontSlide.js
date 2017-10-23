@@ -49,7 +49,7 @@ class UserInfo extends Component {
 						<div className="UserInfo-user">
 						{
 							<p style={{ textTransform: 'capitalize' }}>
-							Welcome <strong style={{ color: 'white' }}>{user.currentUser.name}</strong>! <button className="FestButton" onClick={this.handleLogout}>Logout?</button>
+							Welcome <Link to="/profile"><strong style={{ color: 'white' }}>{user.currentUser.name}</strong></Link>! <button className="FestButton" onClick={this.handleLogout}>Logout?</button>
 							</p>
 						}
 						</div>
@@ -78,6 +78,10 @@ class SocialNetworkingLinks extends Component {
 }
 
 export default class FrontSlide extends Component {
+	state = {
+		loggedOut: false
+	}
+
 	handleLogout = () => {
 		this.setState({ loggedOut: true });
 	}
@@ -103,8 +107,8 @@ export default class FrontSlide extends Component {
 		})
 	}
 
-	shouldComponentUpdate(nextProps) {
-		return this.props.loading != nextProps.loading;
+	shouldComponentUpdate(nextProps, nextState) {
+		return this.props.loading != nextProps.loading || this.state.loggedOut != nextState.loggedOut;
 	}
 
 	render() {

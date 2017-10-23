@@ -85,21 +85,14 @@ class EventLinks extends Component {
 	componentDidUpdate() {
 		if (this.props.close) {
 			const timeline = anime.timeline();
-
-			if (!this.props.loading) {
-				timeline.add({
-					targets: '.EventLinks-heading, .Event-loading, .ComingSoon, .AnimatedEvents',
-					opacity: [1, 0],
-					duration: 500,
-					easing: 'linear'
-				})
-			}
+			const targets = [];
 
 			timeline.add({
 				targets: this.refs.container,
 				height: [ this.refs.container.getBoundingClientRect().height, 0 ],
-				easing: 'easeOutExpo',
+				opacity: [1, 0],
 				duration: 500,
+				easing: 'easeOutExpo',
 			}).complete = this.props.onClose;
 		}
 	}
@@ -163,7 +156,7 @@ class ShortEvent extends Component {
 		const backgroundStyle = Object.assign({}, bstyle, fstyle);
 
 		return (
-			<div className="ShortEvent-wrapper"
+			<div className={"ShortEvent-wrapper" + (this.state.selected && !this.state.close ? " ShortEvent-selected" : "")}
 				style={Object.assign({},this.props.style)}
 				onMouseOver={() => this.setState({ mouseOver: true })}
 				onMouseOut={() => this.setState({ mouseOver: false })}
