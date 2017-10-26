@@ -13,6 +13,11 @@ const links = [
 	 	to: '/sponsors',
 	 },
 	 {
+	 	name: 'Developers',
+	 	to: '/developers',
+	 	type: 'anotherUrl',
+	 },
+	 {
 	 	name: 'Team',
 	 	to: '/team',
 	 },

@@ -37,7 +37,7 @@ class Navigation extends Component {
 									styles.map((style, i) => {
 										const link = links[i];
 
-										if (link.type === 'external') {
+										if (link.type === 'external' || link.type === 'anotherUrl') {
 											return (
 												<a key={i}
 													className="Navigation-link"

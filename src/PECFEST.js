@@ -14,6 +14,8 @@ import sponsors from './sponsors';
 import YWC from './youwecan';
 import NavigationButton from './NavigationButton';
 import FeedbackDialogBox from './FeedbackDialogBox';
+import DevelopersPage from './DevelopersPage';
+import Profile from './Profile';
 
 import './PECFEST.css';
 
@@ -46,6 +48,8 @@ export default class PECFEST extends Component {
 						<Route path="/social" exact component={() => <YWC data={sponsors} />} />
 						<Route path="/register" exact component={SignUpOrLogInForm} />
 						<Route path="/activities/Lectures" exact component={Lectures} />
+						<Route path="/developers" exact component={DevelopersPage} />
+						<Route path="/profile" exact component={Profile} />
 					</div>
 					<NavigationButton />
 					<FeedbackDialogBox />
