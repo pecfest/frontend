@@ -26,6 +26,10 @@ const links = [
 		type: 'external'
 	},
 	{
+		name: 'Social',
+		to: '/social'
+	},
+	{
 		name: 'Hospitality',
 		to: '/hospitality'
 	}

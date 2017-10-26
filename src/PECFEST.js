@@ -11,10 +11,9 @@ import IntroSlides from './IntroSlides';
 import SignUpOrLogInForm from './SignUpOrLogInForm';
 import Sponsors from './napp';
 import sponsors from './sponsors';
+import YWC from './youwecan';
 import NavigationButton from './NavigationButton';
 import FeedbackDialogBox from './FeedbackDialogBox';
-import MegaShows from './MegaShows/MegaShows';
-import Profile from './Profile';
 
 import './PECFEST.css';
 
@@ -34,7 +33,6 @@ export default class PECFEST extends Component {
 					<div className="content">
 						<Route path="/" exact component={IntroSlides} />
 						<Route path="/activities" exact component={Activities} />
-						<Route path="/activities/Lectures" exact component={Lectures} />
 						<Route
 							path="/activities/:activityId/events"
 							exact
@@ -45,9 +43,9 @@ export default class PECFEST extends Component {
 						<Route path="/hospitality" exact component={Hospi} />
 						<Route path="/team" exact component={Team} />
 						<Route path="/sponsors" exact component={() => <Sponsors data={sponsors} />} />
+						<Route path="/social" exact component={() => <YWC data={sponsors} />} />
 						<Route path="/register" exact component={SignUpOrLogInForm} />
-						<Route path="/activities/Shows" exact component={MegaShows} />
-						<Route path="/profile" exact component={Profile} />
+						<Route path="/activities/Lectures" exact component={Lectures} />
 					</div>
 					<NavigationButton />
 					<FeedbackDialogBox />

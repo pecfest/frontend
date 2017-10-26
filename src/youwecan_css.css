@@ -1,0 +1,33 @@
+.social_img
+{
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
+
+.ywc-main-div {
+	max-width: 768px;
+	margin: auto;
+}
+
+/*
+.social_content
+{
+	margin:2em;
+	background-image: url("./images/capture.jpg");
+	background-size: 10%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+}
+*/
+.social_main-header
+{
+	color:#196070;
+}
+
+@media screen and (max-width: 768px) {
+	.ywc-main-div {
+		margin: 1em;
+	}
+}
