@@ -73,6 +73,19 @@ class MegaShow extends Component {
 			button.classList.add('RegisterButton')
 			innerDiv.appendChild(button);
 		}
+
+		if (this.props.show.poster) {
+			var poster = document.createElement('div');
+			poster.classList.add('RegisterButton');
+			poster.classList.add('posterUrl');
+			var posterUrl = document.createElement('a');
+			posterUrl.setAttribute('target', '_blank')
+			posterUrl.innerText = 'Download poster';
+			posterUrl.href = `${this.props.show.poster}`;
+			poster.appendChild(posterUrl);
+			innerDiv.appendChild(poster);
+		}
+
 		return innerDiv;
 	}
 
@@ -150,7 +163,7 @@ class MegaShow extends Component {
 			easing: 'easeOutExpo',
 			duration: 2000,
 		}).add({
-			targets: '.MegaShow-heading, .MegaShow-titleline, .MegaShow-dateHeading, .RegisterButton',
+			targets: '.MegaShow-heading, .MegaShow-titleline, .MegaShow-dateHeading, .RegisterButton, .posterUrl',
 			opacity: [0, 1],
 			duration: 2000,
 			translateX: ['100px', '0'],

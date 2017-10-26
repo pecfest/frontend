@@ -3,6 +3,7 @@ import glit from '../images/glit.jpg';
 import bhangra from '../images/bhangra.jpg';
 import artha from '../images/artha.jpg';
 import dakua from '../images/dakua.jpg';
+import groovz from '../images/groovz.jpg';
 
 export default [
 	{
@@ -12,6 +13,7 @@ export default [
 		location: 'Main Stage',
 		coverPhoto: farhanPicture,
 		isEvent: false,
+		poster: '/Images/shows/Farhan.jpg',
 		shouldSplit: true,
 	},
 	{
@@ -20,6 +22,7 @@ export default [
 		date: '27 OCT',
 		location: 'Main Stage',
 		coverPhoto: glit,
+		poster: '/Images/shows/gl.jpg',
 		isEvent: true,
 		eventId: '/events/178',
 		shouldSplit: false,
@@ -30,6 +33,7 @@ export default [
 		date: '',
 		location: 'Main Stage',
 		coverPhoto: bhangra,
+		poster: '/Images/shows/bhangraT.jpg',
 		isEvent: true,
 		eventId: '/events/122',
 		shouldSplit: false,
@@ -40,6 +44,7 @@ export default [
 		titleLine: `Headlining 'The Fusion Band Competition'`,
 		date: '',
 		location: '',
+		poster: '/Images/shows/Artha.jpg',
 		coverPhoto: artha,
 		shouldSplit: false,
 	},
@@ -49,7 +54,19 @@ export default [
 		titleLine: `Headlining 'Rockathon'`,
 		date: '',
 		location: '',
+		poster: '/Images/shows/DakuaStop.jpg',
 		coverPhoto: dakua,
 		shouldSplit: false,
+	},
+	{
+		id: 6,
+		title: 'Groovz',
+		titleLine: 'Bollywood Dance',
+		date: '27 OCT',
+		location: 'Main Stage',
+		coverPhoto: groovz,
+		shouldSplit: false,
+		isEvent: true,
+		eventId: '/events/119',
 	}
 ]

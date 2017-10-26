@@ -23,18 +23,37 @@ export default class Swipeable extends Component {
 		const touches = event.touches;
 		const threshold = this.props.threshold || 50;
 		if (this.props.onSwipe) {
-			if (this.state.startX - this.state.currentX > threshold) {
-				this.props.onSwipe('left');
-			} else if (this.state.startX - this.state.currentX < -threshold) {
-				this.props.onSwipe('right');
-			} else if (this.props.onCancel) {
-				this.props.onCancel();
+			const diffX = this.state.startX - this.state.currentX;
+			const diffY = this.state.startY - this.state.currentY;
+			if (Math.abs(diffX) > Math.abs(diffY)) {
+	 			if (diffX > threshold) {
+					this.props.onSwipe('left');
+				} else if (diffX < -threshold) {
+					this.props.onSwipe('right');
+				} else if (this.props.onCancel) {
+					this.props.onCancel();
+				}
+			} else if (Math.abs(diffY) > Math.abs(diffX)) {
+				if (diffY > threshold) {
+					this.props.onSwipe('up');
+				} else if (diffY < -threshold) {
+					this.props.onSwipe('down');
+				} else if (this.props.onCancel) {
+					this.props.onCancel();
+				}
+			} else {
+				if (this.props.onCancel)
+					this.props.onCancel();
 			}
 		}
 	}
 
 	handleKeyUp = event => {
-		console.log(event);
+
+	}
+
+	handleScroll = ({target}) => {
+		console.log(target);
 	}
 
 	render() {
@@ -44,6 +63,7 @@ export default class Swipeable extends Component {
 				onTouchEnd={this.handleTouchEnd}
 				onTouchMove={this.handleTouchMove}
 				onKeyPress={this.handleKeyUp}
+				onScroll={this.handleScroll}
 				>
 				{this.props.children}
 			</div>

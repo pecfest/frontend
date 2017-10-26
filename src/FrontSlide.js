@@ -6,6 +6,8 @@ import moment from 'moment';
 import user from './user';
 import Divider from './Divider';
 import Loader from './Loader';
+import playstore from './images/playstore.svg'
+
 import './FrontSlide.css';
 
 class Title extends Component {
@@ -71,6 +73,12 @@ class SocialNetworkingLinks extends Component {
 					<div className="SocialNetworkingLinks-link animated">
 						<a href="https://www.youtube.com/channel/UCLaByTlNKxBJDkNqbjtUmdw" target="_blank"><i className="fa fa-youtube" /></a>
 					</div>
+					<div className="SocialNetworkingLinks-link animated">
+						<a href="https://goo.gl/i28tbA" target="_blank">
+							<img src={playstore} className="fa" style={{ opacity: 0.8, width: '28px', height: '28px'}} />
+						</a>
+					</div>
+
 				</div>
 			</div>
 		)
@@ -93,7 +101,7 @@ export default class FrontSlide extends Component {
 			opacity: [0, 1],
 			translateX: [ '20px', '0px'],
 			delay: (el, i, l) => {
-				return i * 100;
+				return i * 50;
 			},
 			easing: 'easeOutExpo'
 		}).add({
@@ -101,7 +109,7 @@ export default class FrontSlide extends Component {
 			opacity: [0, 1],
 			translateY: [ '100px', '0px' ],
 			delay: (el, i, l) => {
-				return i * 200;
+				return i * 100;
 			},
 			easing: 'easeOutExpo'
 		})

@@ -61,6 +61,14 @@
 	font-weight: 700;
 }
 
+.posterUrl {
+	color: white;
+	font-weight: 700;
+	text-decoration: underline;
+	font-size: 0.8em;
+	text-transform: uppercase;
+}
+
 @media screen and (max-width: 768px) {
 	.MegaShow {
 		filter: none;

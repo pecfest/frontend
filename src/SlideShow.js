@@ -3,6 +3,7 @@ import { TransitionMotion, spring } from 'react-motion';
 import SlideShowControlButtons from './SlideShowControlButtons';
 import FrontSlide from './FrontSlide';
 import MegaShows from './MegaShows/MegaShows';
+import Swipeable from './Swipeable';
 import BackgroundCanvas from './BackgroundCanvas';
 
 import './SlideShow.css';
@@ -60,22 +61,39 @@ class Slide extends Component {
 
 export default class SlideShow extends Component {
 	state = {
-		key: 0
+		key: 0,
+		prev: false,
 	}
 
-	willEnter() {
-		return {x: -100}
+	willEnter = () => {
+		return {x: this.state.prev ? 100 : -100}
 	}
 
-	willLeave() {
-		return { x: spring(100) }
+	willLeave = () => {
+		return { x: spring(this.state.prev ? -100 : 100) }
 	}
 
 	handleNext = () => {
 		if (this.state.key + 1 > 1) {
-			this.setState({ key: 0 })
+			this.setState({ key: 0, prev: false })
 		} else {
-			this.setState({ key: 1 })
+			this.setState({ key: 1, prev: false })
+		}
+	}
+
+	handlePrev = () => {
+		if (this.state.key - 1 < 0) {
+			this.setState({ key: 1, prev: true })
+		} else {
+			this.setState({ key: 0, prev: true })
+		}
+	}
+
+	handleSwipe = (dir) => {
+		if (dir == 'up') {
+			this.handleNext();
+		} else if (dir == 'down') {
+			this.handlePrev();
 		}
 	}
 
@@ -89,7 +107,7 @@ export default class SlideShow extends Component {
 						{
 							key: this.state.key.toString(),
 							style: {
-								x: -100
+								x: this.state.prev ? 100 : -100
 							}
 						}
 					]
@@ -103,7 +121,7 @@ export default class SlideShow extends Component {
 					}]
 				}>
 				{
-					styles => <div className="SlideShow-wrapper" style={{ color: 'white' }}>
+					styles => <Swipeable onSwipe={this.handleSwipe} className="SlideShow-wrapper" style={{ color: 'white' }}>
 						{
 							styles.map(style => {
 								return (
@@ -111,7 +129,7 @@ export default class SlideShow extends Component {
 								)
 							})
 						}
-					</div>
+					</Swipeable>
 				}
 			</TransitionMotion>
 		)
